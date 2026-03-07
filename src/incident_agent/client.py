@@ -12,6 +12,7 @@ class Client:
         self.endpoint = endpoint
         self.client_version = client_version
         self.ws = None
+        self.capabilities = {}
 
     async def __aenter__(self):
         self.ws = await websockets.connect(self.endpoint, subprotocols=["mcp"])
@@ -23,13 +24,14 @@ class Client:
 
     async def _initialize(self):
         params = {"clientName": "incident-agent", "clientVersion": self.client_version}
-        self.capabilities = await self._send_request(RequestType.INITIALIZE, params)   
+        self.capabilities = await self._send_request(RequestType.INITIALIZE, params)
+        self.capabilities = self.capabilities["result"]["capabilities"]
         self.logger.info('--------------------------------------------------------------------')
         self.logger.info(json.dumps(self.capabilities, indent=4))
         self.logger.info('Handshake accepted, response received. server capabilities are: ') #, "\n\n", json.dumps(self.capabilities, indent=4), "\n")  
-        tool_names = [tool["name"] for tool in self.capabilities["result"]["capabilities"]["tools"]]
+        tool_names = [tool["name"] for tool in self.capabilities["tools"]]
         self.logger.info(f"\tTools: {tool_names}")
-        self.logger.info(f"\tResources: {self.capabilities['result']['capabilities']['resources']}")
+        self.logger.info(f"\tResources: {self.capabilities['resources']}")
         self.logger.info('--------------------------------------------------------------------\n\n')
         
     async def _send_request(self, request_type: RequestType, params: Dict[str, Any]) -> Any:

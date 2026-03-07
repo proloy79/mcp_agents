@@ -4,11 +4,7 @@ from ..models import ToolMetadata, ToolDefinition
 RETRIEVE_RUNBOOK_DEF = ToolDefinition(
     metadata=ToolMetadata(
         name="retrieve_runbook",
-        description="Retrieve the most relevant runbook steps for a given query.",        
-        expected_latency_ms=120,
-        cost_units=1,
-        risk_level="low",
-        side_effects="read-only",
+        description="Retrieve the most relevant runbook steps for a given query."
     ),
     input_schema={
         "type": "object",

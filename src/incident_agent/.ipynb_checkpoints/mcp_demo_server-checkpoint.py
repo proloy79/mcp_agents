@@ -27,14 +27,29 @@ _tool_spec_registry.register("summarize_incident", SUMMARIZE_INCIDENT_SPEC)
 RUNBOOK_SNIPPETS = [ # canned runbook guidance
     "Restart the service if CPU > 90% for 5 minutes.", # first tip
     "If pods crashloop, capture logs before redeploying.", # second tip
+    "If service unavaiale, try restarting first.",
 ] # end runbook list
 
-ALERT_PAYLOAD = { # representative alert object
+CPU_SPIKE_ALERT_PAYLOAD = { # representative alert object
     "id": "ALRT-2025-07",
     "service": "staging-api",
     "symptom": "CPU spike on node-3",
     "severity": "high",
 } # end alert object
+
+CRASHLOOP_ALERT_PAYLOAD = {
+    "id": "ALRT-2025-11",
+    "service": "risk_engine",
+    "symptom": "Service restart loop detected",
+    "severity": "medium",
+}
+
+GENERIC_ALERT_PAYLOAD = {
+    "id": "ALRT-2025-18",
+    "service": "app-insights",
+    "symptom": "Service unavailable",
+    "severity": "low",
+}
 
 CAPABILITIES = { # capability advertisement
     "tools": [
@@ -68,10 +83,20 @@ async def handle_session(ws): # process each client connection
         if method == RequestType.INITIALIZE: # capability handshake
             result = {"capabilities": CAPABILITIES} # send tool/resource list
         elif method == RequestType.GET_RESOURCE: # resource fetch
+            args = req.get("params", {}).get("arguments", {}) # extract args
+            _logger.debug(f"args={args}")
+            payload = {}
+            if "cpu" in args:
+                payload = CPU_SPIKE_ALERT_PAYLOAD
+            elif "restart" in args or "loop" in args or "crash" in args:
+                payload = CRASHLOOP_ALERT_PAYLOAD
+            else:
+                payload = GENERIC_ALERT_PAYLOAD
+                
             result = {
                 "uri": "memory://alerts/latest",
                 "data": {
-                    "alert": ALERT_PAYLOAD,
+                    "alert": payload,
                     "recommendations": RUNBOOK_SNIPPETS,
                 },
             } # latest alert snapshot

@@ -5,8 +5,6 @@ from dataclasses import dataclass  # Lightweight data containers.
 class ToolMetadata(BaseModel):
     name: str
     description: str
-    expected_latency_ms: int
-    cost_units: int
     risk_level: str = "low"          # e.g. "low" | "medium" | "high"
     side_effects: str = "read-only"  # e.g. "read-only" | "executes-commands"
 

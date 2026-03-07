@@ -19,11 +19,11 @@ class LLMPlanner:
         #short term memory to store every tool call result for this particular incident to avoid repeating same steps
         # self.episodic = [] 
 
-    def plan(self, incident_text: str, memory_snippet) -> Dict[str, Any]:
+    def plan(self, incident_text: str, memory_snippet: str) -> Dict[str, Any]:
         """
         Get the plan from LLM, validate and return
         """        
-        plan = self._fake_llm_plan(incident_text)            
+        plan = self._fake_llm_plan(incident_text, memory_snippet)            
         problems=self._validate_plan(plan["steps"])
         
         if problems:            
@@ -34,54 +34,194 @@ class LLMPlanner:
         #self.logger.info(f"in planner  ---------- {render_plan(plan["steps"])}")
         return plan
 
-    def _fake_llm_plan(self, prompt: str) -> List[PlanStep]:
-        """Return a short plan; stands in for a real LLM call.
-    
-        The prompt is ignored here; we return a fixed, well-formed plan to show the
-        interface clearly.
+    def _fake_llm_plan(self, prompt: str, memory_snippet: str) -> List[PlanStep]:
         """
-        host=''
+        Fake LLM planner that branches into CPU spike, service restart loop,
+        or service unavailable scenarios based on the prompt text.
+        """
+    
         prompt_l = prompt.lower()
-
+    
+        # get the host
         if "host a" in prompt_l:
             host = "A"
         elif "host b" in prompt_l:
             host = "B"
+        else:
+            host = "UNKNOWN"
+    
+        # identify the context
+        if "cpu spike" in prompt_l or "high cpu" in prompt_l:
+            scenario = "cpu"
+        elif "restart loop" in prompt_l or "crash" in prompt_l or "looping" in prompt_l:
+            scenario = "restart_loop"
+        elif "service unavailable" in prompt_l or "unavailable" in prompt_l:
+            scenario = "unavailable"
+        else:
+            scenario = "unknown"
+    
+        # is this a repeated instace
+        repeated = f"host {host.lower()}" in memory_snippet.lower()
+    
+        steps = []
+    
+        # cpu spike
+        if scenario == "cpu":
+            # Step 1: CPU diagnostic
+            steps.append(
+                PlanStep(
+                    tool_name="run_diagnostic",
+                    call_type="tool_call",
+                    input_schema={"host": host, "check": "cpu_usage"},
+                    notes=f"Check CPU usage on host {host}",
+                )
+            )
+    
+            # Step 2: Repeated or first-time logic
+            if repeated:
+                steps.append(
+                    PlanStep(
+                        tool_name="run_diagnostic",
+                        call_type="tool_call",
+                        input_schema={"host": host, "check": "compare_previous"},
+                        notes=f"Compare CPU metrics with previous incidents on host {host}",
+                    )
+                )
+            else:
+                steps.append(
+                    PlanStep(
+                        tool_name="run_diagnostic",
+                        call_type="tool_call",
+                        input_schema={"host": host, "check": "top_processes"},
+                        notes=f"Identify top CPU-consuming processes on host {host}",
+                    )
+                )
+        
+            # Step 3: CPU runbook
+            steps.append(
+                PlanStep(
+                    tool_name="retrieve_runbook",
+                    call_type="tool_call",
+                    input_schema={"query": "cpu spike", "top_k": 3},
+                    notes="Fetch runbook steps for CPU spike scenarios",
+                )
+            )
+        
+            # Step 4: Summary
+            steps.append(
+                PlanStep(
+                    tool_name="summarize_incident",
+                    call_type="tool_call",
+                    input_schema={"alert_id": f"CPU spike on host {host}", "evidence": []},
+                    notes="Summarize CPU spike findings",
+                )
+            )
+    
+        elif scenario == "restart_loop":
+            # Step 1: Check logs
+            steps.append(
+                PlanStep(
+                    tool_name="run_diagnostic",
+                    call_type="tool_call",
+                    input_schema={"host": host, "check": "startup_logs"},
+                    notes=f"Inspect startup logs on host {host}",
+                )
+            )
+    
+            # Step 2: Check previous incidents
+            if repeated:
+                steps.append(
+                    PlanStep(
+                        tool_name="run_diagnostic",
+                        call_type="tool_call",
+                        input_schema={"host": host, "check": "compare_previous"},
+                        notes=f"Compare restart-loop behaviour with previous incidents",
+                    )
+                )
+    
+            # Step 3: Restart-loop runbook
+            steps.append(
+                PlanStep(
+                    tool_name="retrieve_runbook",
+                    call_type="tool_call",
+                    input_schema={"query": "service restart loop", "top_k": 1},
+                    notes="Fetch runbook for repeated service restarts",
+                )
+            )
+    
+            # Step 4: Summary
+            steps.append(
+                PlanStep(
+                    tool_name="summarize_incident",
+                    call_type="tool_call",
+                    input_schema={"alert_id": f"Service restart loop on host {host}", "evidence": []},
+                    notes="Summarize restart-loop findings",
+                )
+            )
+    
+        # generic - service unavailale
+        elif scenario == "unavailable":
+            # Step 1: Check connectivity
+            steps.append(
+                PlanStep(
+                    tool_name="run_diagnostic",
+                    call_type="tool_call",
+                    input_schema={"host": host, "check": "connectivity"},
+                    notes=f"Check service connectivity on host {host}",
+                )
+            )
+    
+            # Step 2: Check dependent resources are healthy
+            steps.append(
+                PlanStep(
+                    tool_name="run_diagnostic",
+                    call_type="tool_call",
+                    input_schema={"host": host, "check": "dependency_health"},
+                    notes=f"Check dependent services for host {host}",
+                )
+            )
+    
+            # Step 3: Unavailable-service runbook
+            steps.append(
+                PlanStep(
+                    tool_name="retrieve_runbook",
+                    call_type="tool_call",
+                    input_schema={"query": "service unavailable", "top_k": 1},
+                    notes="Fetch runbook for service unavailability",
+                )
+            )
+    
+            # Step 4: Summary
+            steps.append(
+                PlanStep(
+                    tool_name="summarize_incident",
+                    call_type="tool_call",
+                    input_schema={"alert_id": f"Service unavailable on host {host}", "evidence": []},
+                    notes="Summarize service-unavailable findings",
+                )
+            )
+    
+        # other scenarios
+        else:
+            steps.append(
+                PlanStep(
+                    tool_name="retrieve_runbook",
+                    call_type="tool_call",
+                    input_schema={"query": "general troubleshooting", "top_k": 1},
+                    notes="Fallback runbook for unknown issues",
+                )
+            )
+            steps.append(
+                PlanStep(
+                    tool_name="summarize_incident",
+                    call_type="tool_call",
+                    input_schema={"alert_id": "Unknown issue", "evidence": []},
+                    notes="Summarize unknown incident",
+                )
+            )
+    
+        return {"steps": steps}
 
-            
-        return {"steps" : [
-            PlanStep(
-                tool_name="run_diagnostic",
-                call_type="tool_call",
-                input_schema={"host": host, "check": "cpu_usage"},
-                notes=f"Get CPU metrics for host {host}",
-            ),
-            PlanStep(
-                tool_name="run_diagnostic",
-                call_type="tool_call",
-                input_schema={"host": host, "check": "top_processes"},
-                notes="Identify top CPU-consuming processes",
-            ),
-            PlanStep(
-                tool_name="retrieve_runbook",
-                call_type="tool_call",
-                input_schema={"query": f"cpu spike on host {host}", "top_k": 3},
-                notes="Fetch relevant runbook steps for CPU spike scenarios",
-            ),
-            PlanStep(
-                tool_name="summarize_incident",
-                call_type="tool_call",
-                input_schema={
-                    "title": f"CPU spike on host {host}",
-                    "signals": [
-                        "cpu_usage",
-                        "top_processes",
-                        "runbook_guidance"
-                    ]
-                },
-                notes="Summarize the findings",
-            ),
-        ]}
     
     
     def _validate_plan(self, steps: List[PlanStep]) -> List[str]:

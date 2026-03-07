@@ -1,0 +1,2816 @@
+2026-03-05 23:25:41,034 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-05 23:25:41,034 [INFO] IncidentAgent: Plan returned by llm is: 
+1. run_diagnostic | schema=['host', 'check'] | Get CPU metrics for host A
+2. run_diagnostic | schema=['host', 'check'] | Identify top CPU-consuming processes
+3. retrieve_runbook | schema=['query', 'top_k'] | Fetch relevant runbook steps for CPU spike scenarios
+4. summarize_incident | schema=['title', 'signals'] | Summarize the findings
+
+2026-03-05 23:25:41,034 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-05 23:25:41,035 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=A, command=None → status=unknown, details=
+---------------------------------------------------
+2026-03-05 23:25:41,036 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'top_processes'}
+Result:
+[diagnostic] host=A, command=None → status=unknown, details=
+---------------------------------------------------
+2026-03-05 23:25:41,037 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'cpu spike on host A', 'top_k': 3}
+Result:
+[runbook] Database outage → Check logs -> Restart DB -> Verify replication (confidence=0.92)
+---------------------------------------------------
+2026-03-05 23:25:41,037 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'cpu spike on host A', 'top_k': 3}
+Result:
+[runbook] High CPU on webserver → Inspect top -> Restart service -> Check load balancer (confidence=0.88)
+---------------------------------------------------
+2026-03-05 23:25:41,037 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host A', 'signals': ['cpu_usage', 'top_processes', 'runbook_guidance']}
+Result:
+[summary] CPU spike on host A → signals: cpu_usage, top_processes, runbook_guidance
+---------------------------------------------------
+2026-03-05 23:25:41,037 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host B
+
+2026-03-05 23:25:41,038 [INFO] IncidentAgent: Plan returned by llm is: 
+1. run_diagnostic | schema=['host', 'check'] | Get CPU metrics for host B
+2. run_diagnostic | schema=['host', 'check'] | Identify top CPU-consuming processes
+3. retrieve_runbook | schema=['query', 'top_k'] | Fetch relevant runbook steps for CPU spike scenarios
+4. summarize_incident | schema=['title', 'signals'] | Summarize the findings
+
+2026-03-05 23:25:41,039 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-05 23:25:41,039 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=B, command=None → status=unknown, details=
+---------------------------------------------------
+2026-03-05 23:25:41,040 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'top_processes'}
+Result:
+[diagnostic] host=B, command=None → status=unknown, details=
+---------------------------------------------------
+2026-03-05 23:25:41,041 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'cpu spike on host B', 'top_k': 3}
+Result:
+[runbook] Database outage → Check logs -> Restart DB -> Verify replication (confidence=0.92)
+---------------------------------------------------
+2026-03-05 23:25:41,041 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'cpu spike on host B', 'top_k': 3}
+Result:
+[runbook] High CPU on webserver → Inspect top -> Restart service -> Check load balancer (confidence=0.88)
+---------------------------------------------------
+2026-03-05 23:25:41,043 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host B', 'signals': ['cpu_usage', 'top_processes', 'runbook_guidance']}
+Result:
+[summary] CPU spike on host B → signals: cpu_usage, top_processes, runbook_guidance
+---------------------------------------------------
+2026-03-05 23:27:01,758 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-05 23:27:01,759 [INFO] IncidentAgent: Plan returned by llm is: 
+1. run_diagnostic | schema=['host', 'check'] | Get CPU metrics for host A
+2. run_diagnostic | schema=['host', 'check'] | Identify top CPU-consuming processes
+3. retrieve_runbook | schema=['query', 'top_k'] | Fetch relevant runbook steps for CPU spike scenarios
+4. summarize_incident | schema=['title', 'signals'] | Summarize the findings
+
+2026-03-05 23:27:01,759 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-05 23:27:01,760 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=A, command=cpu_usage → status=unknown, details=
+---------------------------------------------------
+2026-03-05 23:27:01,761 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'top_processes'}
+Result:
+[diagnostic] host=A, command=top_processes → status=unknown, details=
+---------------------------------------------------
+2026-03-05 23:27:01,762 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'cpu spike on host A', 'top_k': 3}
+Result:
+[runbook] Database outage → Check logs -> Restart DB -> Verify replication (confidence=0.92)
+---------------------------------------------------
+2026-03-05 23:27:01,762 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'cpu spike on host A', 'top_k': 3}
+Result:
+[runbook] High CPU on webserver → Inspect top -> Restart service -> Check load balancer (confidence=0.88)
+---------------------------------------------------
+2026-03-05 23:27:01,762 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host A', 'signals': ['cpu_usage', 'top_processes', 'runbook_guidance']}
+Result:
+[summary] CPU spike on host A → signals: cpu_usage, top_processes, runbook_guidance
+---------------------------------------------------
+2026-03-05 23:27:01,762 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host B
+
+2026-03-05 23:27:01,763 [INFO] IncidentAgent: Plan returned by llm is: 
+1. run_diagnostic | schema=['host', 'check'] | Get CPU metrics for host B
+2. run_diagnostic | schema=['host', 'check'] | Identify top CPU-consuming processes
+3. retrieve_runbook | schema=['query', 'top_k'] | Fetch relevant runbook steps for CPU spike scenarios
+4. summarize_incident | schema=['title', 'signals'] | Summarize the findings
+
+2026-03-05 23:27:01,763 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-05 23:27:01,763 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=B, command=cpu_usage → status=unknown, details=
+---------------------------------------------------
+2026-03-05 23:27:01,764 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'top_processes'}
+Result:
+[diagnostic] host=B, command=top_processes → status=unknown, details=
+---------------------------------------------------
+2026-03-05 23:27:01,764 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'cpu spike on host B', 'top_k': 3}
+Result:
+[runbook] Database outage → Check logs -> Restart DB -> Verify replication (confidence=0.92)
+---------------------------------------------------
+2026-03-05 23:27:01,764 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'cpu spike on host B', 'top_k': 3}
+Result:
+[runbook] High CPU on webserver → Inspect top -> Restart service -> Check load balancer (confidence=0.88)
+---------------------------------------------------
+2026-03-05 23:27:01,765 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host B', 'signals': ['cpu_usage', 'top_processes', 'runbook_guidance']}
+Result:
+[summary] CPU spike on host B → signals: cpu_usage, top_processes, runbook_guidance
+---------------------------------------------------
+2026-03-05 23:30:18,646 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-05 23:30:18,646 [INFO] IncidentAgent: Plan returned by llm is: 
+1. run_diagnostic | schema=['host', 'check'] | Get CPU metrics for host A
+2. run_diagnostic | schema=['host', 'check'] | Identify top CPU-consuming processes
+3. retrieve_runbook | schema=['query', 'top_k'] | Fetch relevant runbook steps for CPU spike scenarios
+4. summarize_incident | schema=['title', 'signals'] | Summarize the findings
+
+2026-03-05 23:30:18,646 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-05 23:30:18,647 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=A, command=cpu_usage → status=ok, details=
+---------------------------------------------------
+2026-03-05 23:30:18,648 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'top_processes'}
+Result:
+[diagnostic] host=A, command=top_processes → status=ok, details=
+---------------------------------------------------
+2026-03-05 23:30:18,649 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'cpu spike on host A', 'top_k': 3}
+Result:
+[runbook] Database outage → Check logs -> Restart DB -> Verify replication (confidence=0.92)
+---------------------------------------------------
+2026-03-05 23:30:18,649 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'cpu spike on host A', 'top_k': 3}
+Result:
+[runbook] High CPU on webserver → Inspect top -> Restart service -> Check load balancer (confidence=0.88)
+---------------------------------------------------
+2026-03-05 23:30:18,649 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host A', 'signals': ['cpu_usage', 'top_processes', 'runbook_guidance']}
+Result:
+[summary] CPU spike on host A → signals: cpu_usage, top_processes, runbook_guidance
+---------------------------------------------------
+2026-03-05 23:30:18,650 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host B
+
+2026-03-05 23:30:18,650 [INFO] IncidentAgent: Plan returned by llm is: 
+1. run_diagnostic | schema=['host', 'check'] | Get CPU metrics for host B
+2. run_diagnostic | schema=['host', 'check'] | Identify top CPU-consuming processes
+3. retrieve_runbook | schema=['query', 'top_k'] | Fetch relevant runbook steps for CPU spike scenarios
+4. summarize_incident | schema=['title', 'signals'] | Summarize the findings
+
+2026-03-05 23:30:18,650 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-05 23:30:18,651 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=B, command=cpu_usage → status=ok, details=
+---------------------------------------------------
+2026-03-05 23:30:18,652 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'top_processes'}
+Result:
+[diagnostic] host=B, command=top_processes → status=ok, details=
+---------------------------------------------------
+2026-03-05 23:30:18,653 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'cpu spike on host B', 'top_k': 3}
+Result:
+[runbook] Database outage → Check logs -> Restart DB -> Verify replication (confidence=0.92)
+---------------------------------------------------
+2026-03-05 23:30:18,653 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'cpu spike on host B', 'top_k': 3}
+Result:
+[runbook] High CPU on webserver → Inspect top -> Restart service -> Check load balancer (confidence=0.88)
+---------------------------------------------------
+2026-03-05 23:30:18,653 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host B', 'signals': ['cpu_usage', 'top_processes', 'runbook_guidance']}
+Result:
+[summary] CPU spike on host B → signals: cpu_usage, top_processes, runbook_guidance
+---------------------------------------------------
+2026-03-05 23:30:39,672 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-05 23:30:39,673 [INFO] IncidentAgent: Plan returned by llm is: 
+1. run_diagnostic | schema=['host', 'check'] | Get CPU metrics for host A
+2. run_diagnostic | schema=['host', 'check'] | Identify top CPU-consuming processes
+3. retrieve_runbook | schema=['query', 'top_k'] | Fetch relevant runbook steps for CPU spike scenarios
+4. summarize_incident | schema=['title', 'signals'] | Summarize the findings
+
+2026-03-05 23:30:39,673 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-05 23:30:39,674 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=A, command=cpu_usage → status=ok, details=All pods healthy
+---------------------------------------------------
+2026-03-05 23:30:39,674 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'top_processes'}
+Result:
+[diagnostic] host=A, command=top_processes → status=ok, details=All pods healthy
+---------------------------------------------------
+2026-03-05 23:30:39,675 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'cpu spike on host A', 'top_k': 3}
+Result:
+[runbook] Database outage → Check logs -> Restart DB -> Verify replication (confidence=0.92)
+---------------------------------------------------
+2026-03-05 23:30:39,675 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'cpu spike on host A', 'top_k': 3}
+Result:
+[runbook] High CPU on webserver → Inspect top -> Restart service -> Check load balancer (confidence=0.88)
+---------------------------------------------------
+2026-03-05 23:30:39,677 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host A', 'signals': ['cpu_usage', 'top_processes', 'runbook_guidance']}
+Result:
+[summary] CPU spike on host A → signals: cpu_usage, top_processes, runbook_guidance
+---------------------------------------------------
+2026-03-05 23:30:39,677 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host B
+
+2026-03-05 23:30:39,677 [INFO] IncidentAgent: Plan returned by llm is: 
+1. run_diagnostic | schema=['host', 'check'] | Get CPU metrics for host B
+2. run_diagnostic | schema=['host', 'check'] | Identify top CPU-consuming processes
+3. retrieve_runbook | schema=['query', 'top_k'] | Fetch relevant runbook steps for CPU spike scenarios
+4. summarize_incident | schema=['title', 'signals'] | Summarize the findings
+
+2026-03-05 23:30:39,677 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-05 23:30:39,679 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=B, command=cpu_usage → status=ok, details=All pods healthy
+---------------------------------------------------
+2026-03-05 23:30:39,679 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'top_processes'}
+Result:
+[diagnostic] host=B, command=top_processes → status=ok, details=All pods healthy
+---------------------------------------------------
+2026-03-05 23:30:39,681 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'cpu spike on host B', 'top_k': 3}
+Result:
+[runbook] Database outage → Check logs -> Restart DB -> Verify replication (confidence=0.92)
+---------------------------------------------------
+2026-03-05 23:30:39,681 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'cpu spike on host B', 'top_k': 3}
+Result:
+[runbook] High CPU on webserver → Inspect top -> Restart service -> Check load balancer (confidence=0.88)
+---------------------------------------------------
+2026-03-05 23:30:39,681 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host B', 'signals': ['cpu_usage', 'top_processes', 'runbook_guidance']}
+Result:
+[summary] CPU spike on host B → signals: cpu_usage, top_processes, runbook_guidance
+---------------------------------------------------
+2026-03-05 23:35:17,639 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-05 23:35:17,639 [INFO] IncidentAgent: Plan returned by llm is: 
+1. run_diagnostic | schema=['host', 'check'] | Get CPU metrics for host A
+2. run_diagnostic | schema=['host', 'check'] | Identify top CPU-consuming processes
+3. retrieve_runbook | schema=['query', 'top_k'] | Fetch relevant runbook steps for CPU spike scenarios
+4. summarize_incident | schema=['title', 'signals'] | Summarize the findings
+
+2026-03-05 23:35:17,639 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-05 23:35:17,640 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=A, command=cpu_usage → status=ok, details=All pods healthy
+---------------------------------------------------
+2026-03-05 23:35:17,641 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'top_processes'}
+Result:
+[diagnostic] host=A, command=top_processes → status=ok, details=All pods healthy
+---------------------------------------------------
+2026-03-05 23:35:17,642 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'cpu spike on host A', 'top_k': 3}
+Result:
+[runbook] Database outage → Check logs -> Restart DB -> Verify replication (confidence=0.92)
+---------------------------------------------------
+2026-03-05 23:35:17,642 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'cpu spike on host A', 'top_k': 3}
+Result:
+[runbook] High CPU on webserver → Inspect top -> Restart service -> Check load balancer (confidence=0.88)
+---------------------------------------------------
+2026-03-05 23:35:17,642 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host A', 'signals': ['cpu_usage', 'top_processes', 'runbook_guidance']}
+Result:
+[summary] CPU spike on host A → signals: cpu_usage, top_processes, runbook_guidance
+---------------------------------------------------
+2026-03-05 23:35:17,642 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host B
+
+2026-03-05 23:35:17,643 [INFO] IncidentAgent: Plan returned by llm is: 
+1. run_diagnostic | schema=['host', 'check'] | Get CPU metrics for host B
+2. run_diagnostic | schema=['host', 'check'] | Identify top CPU-consuming processes
+3. retrieve_runbook | schema=['query', 'top_k'] | Fetch relevant runbook steps for CPU spike scenarios
+4. summarize_incident | schema=['title', 'signals'] | Summarize the findings
+
+2026-03-05 23:35:17,643 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-05 23:35:17,644 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=B, command=cpu_usage → status=ok, details=All pods healthy
+---------------------------------------------------
+2026-03-05 23:35:17,644 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'top_processes'}
+Result:
+[diagnostic] host=B, command=top_processes → status=ok, details=All pods healthy
+---------------------------------------------------
+2026-03-05 23:35:17,644 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'cpu spike on host B', 'top_k': 3}
+Result:
+[runbook] Database outage → Check logs -> Restart DB -> Verify replication (confidence=0.92)
+---------------------------------------------------
+2026-03-05 23:35:17,645 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'cpu spike on host B', 'top_k': 3}
+Result:
+[runbook] High CPU on webserver → Inspect top -> Restart service -> Check load balancer (confidence=0.88)
+---------------------------------------------------
+2026-03-05 23:35:17,645 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host B', 'signals': ['cpu_usage', 'top_processes', 'runbook_guidance']}
+Result:
+[summary] CPU spike on host B → signals: cpu_usage, top_processes, runbook_guidance
+---------------------------------------------------
+2026-03-06 22:26:54,251 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-06 22:44:07,717 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-06 22:44:45,347 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-06 22:47:09,669 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-06 22:47:23,686 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-06 22:47:23,687 [DEBUG] IncidentAgent: dict_keys(['jsonrpc', 'id', 'result'])
+2026-03-06 22:47:57,826 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-06 22:47:57,827 [DEBUG] IncidentAgent: dict_keys(['jsonrpc', 'id', 'result'])
+2026-03-06 22:48:19,059 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-06 22:48:19,059 [DEBUG] IncidentAgent: dict_keys(['capabilities'])
+2026-03-06 22:49:04,319 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-06 22:49:04,320 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-06 22:51:07,250 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-06 22:51:07,250 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-06 22:52:25,505 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-06 22:52:25,505 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-06 22:54:16,039 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-06 22:54:16,040 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-06 22:54:16,041 [DEBUG] IncidentAgent: Planner prompt: 
+            You are an incident response agent.
+            
+            Current observation:
+            CPU spike on host A
+            
+            Alert snapshot:
+            {'jsonrpc': '2.0', 'id': 'e7ec27c8-3ca0-4b79-bdbb-c7347f505b82', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-07', 'service': 'staging-api', 'symptom': 'CPU spike on node-3', 'severity': 'high'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.']}}}
+            
+            Relevant memory:
+            Relevant past incidents:
+1. [observation] CPU spike on host A (91%)
+
+Recent activity:
+CPU A
+            
+            Available tools:
+            1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+            
+            Based on this information, produce a step-by-step plan.
+        
+2026-03-06 22:55:26,957 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-06 22:55:26,957 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-06 22:55:26,958 [DEBUG] IncidentAgent: Planner prompt: 
+            You are an incident response agent.
+            
+            Current observation:
+            CPU spike on host A
+            
+            Alert snapshot:
+            {'jsonrpc': '2.0', 'id': '4b442184-d3b7-436f-a7c1-84bd2f7d6371', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-07', 'service': 'staging-api', 'symptom': 'CPU spike on node-3', 'severity': 'high'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.']}}}
+            
+            Relevant memory:
+            Relevant past incidents:
+1. [observation] CPU spike on host A (91%)
+
+Recent activity:
+CPU A
+            
+            Available tools:
+            1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+            
+            Based on this information, produce a step-by-step plan.
+        
+2026-03-06 22:59:23,854 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-06 22:59:23,854 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-06 22:59:23,855 [DEBUG] IncidentAgent: Planner prompt: 
+            You are an incident response agent.
+            
+            Current observation:
+            CPU spike on host A
+            
+            Alert snapshot:
+            {'jsonrpc': '2.0', 'id': '4df26fa8-0a4c-4b94-8155-67c2974e5d2e', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-07', 'service': 'staging-api', 'symptom': 'CPU spike on node-3', 'severity': 'high'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.']}}}
+            
+            Relevant memory:
+            Relevant past incidents:
+1. [observation] CPU spike on host A (91%)
+
+Recent activity:
+CPU A
+            
+            Available tools:
+            1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+            
+            Based on this information, produce a step-by-step plan.
+        
+2026-03-06 22:59:23,855 [INFO] IncidentAgent: Plan returned by llm is: 
+1. run_diagnostic | schema=['host', 'check'] | Check CPU usage on host A
+2. run_diagnostic | schema=['host', 'check'] | Compare CPU metrics with previous incidents on host A
+3. retrieve_runbook | schema=['query', 'top_k'] | Fetch relevant runbook steps for CPU spike scenarios
+4. summarize_incident | schema=['title', 'signals'] | Summarize the findings
+
+2026-03-06 22:59:23,855 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-06 22:59:23,856 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=A, command=cpu_usage → status=ok, details=CPU usage on host A is 92%(latency=3.4ms)
+---------------------------------------------------
+2026-03-06 22:59:23,857 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'compare_previous'}
+Result:
+[diagnostic] host=A, command=compare_previous → status=ok, details=Current CPU usage on host A is similar to previous incident(latency=4.2ms)
+---------------------------------------------------
+2026-03-06 22:59:23,858 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CPU spike on host → Check CPU usage -> Inspect top processes -> Restart service if needed -> Verify load balancer distribution (confidence=0.91)
+---------------------------------------------------
+2026-03-06 22:59:23,858 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CrashLoopBackOff → Check pod logs -> Inspect recent deploys -> Rollback if necessary (confidence=0.87)
+---------------------------------------------------
+2026-03-06 22:59:23,858 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] High memory usage → Inspect memory profile -> Check for leaks -> Restart service (confidence=0.83)
+---------------------------------------------------
+2026-03-06 22:59:23,859 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host A', 'signals': ['cpu_usage']}
+Result:
+[summary] CPU spike on host A → signals: cpu_usage
+---------------------------------------------------
+2026-03-06 22:59:23,859 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host B
+
+2026-03-06 22:59:23,859 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-06 22:59:23,860 [DEBUG] IncidentAgent: Planner prompt: 
+            You are an incident response agent.
+            
+            Current observation:
+            CPU spike on host B
+            
+            Alert snapshot:
+            {'jsonrpc': '2.0', 'id': '1b57d2ef-89c6-40f5-b11b-11416651b609', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-07', 'service': 'staging-api', 'symptom': 'CPU spike on node-3', 'severity': 'high'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.']}}}
+            
+            Relevant memory:
+            Relevant past incidents:
+1. [observation] CPU spike on host B (91%)
+
+Recent activity:
+High Inspect Check Restart CPU A CPU B
+            
+            Available tools:
+            1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+            
+            Based on this information, produce a step-by-step plan.
+        
+2026-03-06 22:59:23,860 [INFO] IncidentAgent: Plan returned by llm is: 
+1. run_diagnostic | schema=['host', 'check'] | Check CPU usage on host B
+2. run_diagnostic | schema=['host', 'check'] | Compare CPU metrics with previous incidents on host B
+3. retrieve_runbook | schema=['query', 'top_k'] | Fetch relevant runbook steps for CPU spike scenarios
+4. summarize_incident | schema=['title', 'signals'] | Summarize the findings
+
+2026-03-06 22:59:23,860 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-06 22:59:23,861 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=B, command=cpu_usage → status=ok, details=CPU usage on host B is 92%(latency=8.6ms)
+---------------------------------------------------
+2026-03-06 22:59:23,861 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'compare_previous'}
+Result:
+[diagnostic] host=B, command=compare_previous → status=ok, details=Current CPU usage on host B is similar to previous incident(latency=9.1ms)
+---------------------------------------------------
+2026-03-06 22:59:23,862 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CPU spike on host → Check CPU usage -> Inspect top processes -> Restart service if needed -> Verify load balancer distribution (confidence=0.91)
+---------------------------------------------------
+2026-03-06 22:59:23,862 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CrashLoopBackOff → Check pod logs -> Inspect recent deploys -> Rollback if necessary (confidence=0.87)
+---------------------------------------------------
+2026-03-06 22:59:23,862 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] High memory usage → Inspect memory profile -> Check for leaks -> Restart service (confidence=0.83)
+---------------------------------------------------
+2026-03-06 22:59:23,863 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host B', 'signals': ['cpu_usage']}
+Result:
+[summary] CPU spike on host B → signals: cpu_usage
+---------------------------------------------------
+2026-03-06 23:00:36,609 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-06 23:00:36,609 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-06 23:00:36,610 [DEBUG] IncidentAgent: Planner prompt: 
+            You are an incident response agent.
+            
+            Current observation:
+            CPU spike on host A
+            
+            Alert snapshot:
+            {'jsonrpc': '2.0', 'id': '92297e3a-5ea4-4916-afad-b7b21a19d344', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-07', 'service': 'staging-api', 'symptom': 'CPU spike on node-3', 'severity': 'high'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.']}}}
+            
+            Relevant memory:
+            Relevant past incidents:
+1. [observation] CPU spike on host A (91%)
+
+Recent activity:
+CPU A
+            
+            Available tools:
+            1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+            
+            Based on this information, produce a step-by-step plan.
+        
+2026-03-06 23:00:36,610 [INFO] IncidentAgent: Plan returned by llm is: 
+1. run_diagnostic | schema=['host', 'check'] | Check CPU usage on host A
+2. run_diagnostic | schema=['host', 'check'] | Compare CPU metrics with previous incidents on host A
+3. retrieve_runbook | schema=['query', 'top_k'] | Fetch relevant runbook steps for CPU spike scenarios
+4. summarize_incident | schema=['title', 'signals'] | Summarize the findings
+
+2026-03-06 23:00:36,610 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-06 23:00:36,611 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=A, command=cpu_usage → status=ok, details=CPU usage on host A is 92%(latency=18.9ms)
+---------------------------------------------------
+2026-03-06 23:00:36,612 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'compare_previous'}
+Result:
+[diagnostic] host=A, command=compare_previous → status=ok, details=Current CPU usage on host A is similar to previous incident(latency=19.8ms)
+---------------------------------------------------
+2026-03-06 23:00:36,613 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CPU spike on host → Check CPU usage -> Inspect top processes -> Restart service if needed -> Verify load balancer distribution (confidence=0.91)
+---------------------------------------------------
+2026-03-06 23:00:36,613 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CrashLoopBackOff → Check pod logs -> Inspect recent deploys -> Rollback if necessary (confidence=0.87)
+---------------------------------------------------
+2026-03-06 23:00:36,613 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] High memory usage → Inspect memory profile -> Check for leaks -> Restart service (confidence=0.83)
+---------------------------------------------------
+2026-03-06 23:00:36,613 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host A', 'signals': ['cpu_usage']}
+Result:
+[summary] CPU spike on host A → signals: cpu_usage
+---------------------------------------------------
+2026-03-06 23:00:36,613 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host B
+
+2026-03-06 23:00:36,614 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-06 23:00:36,614 [DEBUG] IncidentAgent: Planner prompt: 
+            You are an incident response agent.
+            
+            Current observation:
+            CPU spike on host B
+            
+            Alert snapshot:
+            {'jsonrpc': '2.0', 'id': '0c1f9edd-25c6-48cb-b35c-a3053d98718e', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-07', 'service': 'staging-api', 'symptom': 'CPU spike on node-3', 'severity': 'high'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.']}}}
+            
+            Relevant memory:
+            Relevant past incidents:
+1. [observation] CPU spike on host B (91%)
+
+Recent activity:
+High Inspect Check Restart CPU A CPU B
+            
+            Available tools:
+            1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+            
+            Based on this information, produce a step-by-step plan.
+        
+2026-03-06 23:00:36,614 [INFO] IncidentAgent: Plan returned by llm is: 
+1. run_diagnostic | schema=['host', 'check'] | Check CPU usage on host B
+2. run_diagnostic | schema=['host', 'check'] | Compare CPU metrics with previous incidents on host B
+3. retrieve_runbook | schema=['query', 'top_k'] | Fetch relevant runbook steps for CPU spike scenarios
+4. summarize_incident | schema=['title', 'signals'] | Summarize the findings
+
+2026-03-06 23:00:36,614 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-06 23:00:36,615 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=B, command=cpu_usage → status=ok, details=CPU usage on host B is 92%(latency=2.8ms)
+---------------------------------------------------
+2026-03-06 23:00:36,616 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'compare_previous'}
+Result:
+[diagnostic] host=B, command=compare_previous → status=ok, details=Current CPU usage on host B is similar to previous incident(latency=4.1000000000000005ms)
+---------------------------------------------------
+2026-03-06 23:00:36,617 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CPU spike on host → Check CPU usage -> Inspect top processes -> Restart service if needed -> Verify load balancer distribution (confidence=0.91)
+---------------------------------------------------
+2026-03-06 23:00:36,617 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CrashLoopBackOff → Check pod logs -> Inspect recent deploys -> Rollback if necessary (confidence=0.87)
+---------------------------------------------------
+2026-03-06 23:00:36,617 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] High memory usage → Inspect memory profile -> Check for leaks -> Restart service (confidence=0.83)
+---------------------------------------------------
+2026-03-06 23:00:36,618 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host B', 'signals': ['cpu_usage']}
+Result:
+[summary] CPU spike on host B → signals: cpu_usage
+---------------------------------------------------
+2026-03-06 23:01:46,604 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-06 23:01:46,605 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-06 23:01:46,605 [DEBUG] IncidentAgent: Planner prompt: 
+You are an incident response agent.
+
+Current observation:
+CPU spike on host A
+
+Alert snapshot:
+{'jsonrpc': '2.0', 'id': '551f1f6c-8bbd-4c13-ac19-d2eaaa33721e', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-07', 'service': 'staging-api', 'symptom': 'CPU spike on node-3', 'severity': 'high'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.']}}}
+
+Relevant memory:
+Relevant past incidents:
+1. [observation] CPU spike on host A (91%)
+
+Recent activity:
+CPU A
+
+Available tools:
+1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+
+Based on this information, produce a step-by-step plan.
+        
+2026-03-06 23:01:46,606 [INFO] IncidentAgent: Plan returned by llm is: 
+1. run_diagnostic | schema=['host', 'check'] | Check CPU usage on host A
+2. run_diagnostic | schema=['host', 'check'] | Compare CPU metrics with previous incidents on host A
+3. retrieve_runbook | schema=['query', 'top_k'] | Fetch relevant runbook steps for CPU spike scenarios
+4. summarize_incident | schema=['title', 'signals'] | Summarize the findings
+
+2026-03-06 23:01:46,606 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-06 23:01:46,607 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=A, command=cpu_usage → status=ok, details=CPU usage on host A is 92%(latency=14.4ms)
+---------------------------------------------------
+2026-03-06 23:01:46,608 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'compare_previous'}
+Result:
+[diagnostic] host=A, command=compare_previous → status=ok, details=Current CPU usage on host A is similar to previous incident(latency=16.1ms)
+---------------------------------------------------
+2026-03-06 23:01:46,609 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CPU spike on host → Check CPU usage -> Inspect top processes -> Restart service if needed -> Verify load balancer distribution (confidence=0.91)
+---------------------------------------------------
+2026-03-06 23:01:46,610 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CrashLoopBackOff → Check pod logs -> Inspect recent deploys -> Rollback if necessary (confidence=0.87)
+---------------------------------------------------
+2026-03-06 23:01:46,610 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] High memory usage → Inspect memory profile -> Check for leaks -> Restart service (confidence=0.83)
+---------------------------------------------------
+2026-03-06 23:01:46,610 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host A', 'signals': ['cpu_usage']}
+Result:
+[summary] CPU spike on host A → signals: cpu_usage
+---------------------------------------------------
+2026-03-06 23:01:46,611 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host B
+
+2026-03-06 23:01:46,611 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-06 23:01:46,612 [DEBUG] IncidentAgent: Planner prompt: 
+You are an incident response agent.
+
+Current observation:
+CPU spike on host B
+
+Alert snapshot:
+{'jsonrpc': '2.0', 'id': '62c4d5b3-1062-4095-b030-c67354c5f800', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-07', 'service': 'staging-api', 'symptom': 'CPU spike on node-3', 'severity': 'high'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.']}}}
+
+Relevant memory:
+Relevant past incidents:
+1. [observation] CPU spike on host B (91%)
+
+Recent activity:
+High Inspect Check Restart CPU A CPU B
+
+Available tools:
+1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+
+Based on this information, produce a step-by-step plan.
+        
+2026-03-06 23:01:46,612 [INFO] IncidentAgent: Plan returned by llm is: 
+1. run_diagnostic | schema=['host', 'check'] | Check CPU usage on host B
+2. run_diagnostic | schema=['host', 'check'] | Compare CPU metrics with previous incidents on host B
+3. retrieve_runbook | schema=['query', 'top_k'] | Fetch relevant runbook steps for CPU spike scenarios
+4. summarize_incident | schema=['title', 'signals'] | Summarize the findings
+
+2026-03-06 23:01:46,612 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-06 23:01:46,613 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=B, command=cpu_usage → status=ok, details=CPU usage on host B is 92%(latency=0.5ms)
+---------------------------------------------------
+2026-03-06 23:01:46,613 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'compare_previous'}
+Result:
+[diagnostic] host=B, command=compare_previous → status=ok, details=Current CPU usage on host B is similar to previous incident(latency=1.0ms)
+---------------------------------------------------
+2026-03-06 23:01:46,614 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CPU spike on host → Check CPU usage -> Inspect top processes -> Restart service if needed -> Verify load balancer distribution (confidence=0.91)
+---------------------------------------------------
+2026-03-06 23:01:46,614 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CrashLoopBackOff → Check pod logs -> Inspect recent deploys -> Rollback if necessary (confidence=0.87)
+---------------------------------------------------
+2026-03-06 23:01:46,614 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] High memory usage → Inspect memory profile -> Check for leaks -> Restart service (confidence=0.83)
+---------------------------------------------------
+2026-03-06 23:01:46,614 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host B', 'signals': ['cpu_usage']}
+Result:
+[summary] CPU spike on host B → signals: cpu_usage
+---------------------------------------------------
+2026-03-06 23:02:31,978 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-06 23:02:31,978 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-06 23:02:31,979 [DEBUG] IncidentAgent: Planner prompt: 
+You are an incident response agent.
+
+Current observation:
+CPU spike on host A
+
+Alert snapshot:
+{'jsonrpc': '2.0', 'id': 'b97d1e7d-75c1-409f-ade4-bc3b70ff5c08', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-07', 'service': 'staging-api', 'symptom': 'CPU spike on node-3', 'severity': 'high'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.']}}}
+
+Relevant memory:
+Relevant past incidents:
+1. [observation] CPU spike on host A (91%)
+
+Recent activity:
+CPU A
+
+Available tools:
+1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+
+Based on this information, produce a step-by-step plan.
+        
+2026-03-06 23:02:31,979 [INFO] IncidentAgent: Plan returned by llm is: 
+1. run_diagnostic | schema=['host', 'check'] | Check CPU usage on host A
+2. run_diagnostic | schema=['host', 'check'] | Compare CPU metrics with previous incidents on host A
+3. retrieve_runbook | schema=['query', 'top_k'] | Fetch relevant runbook steps for CPU spike scenarios
+4. summarize_incident | schema=['title', 'signals'] | Summarize the findings
+
+2026-03-06 23:02:31,979 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-06 23:02:31,980 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=A, command=cpu_usage → status=ok, details=CPU usage on host A is 92%(latency=7.7ms)
+---------------------------------------------------
+2026-03-06 23:02:31,981 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'compare_previous'}
+Result:
+[diagnostic] host=A, command=compare_previous → status=ok, details=Current CPU usage on host A is similar to previous incident(latency=9.0ms)
+---------------------------------------------------
+2026-03-06 23:02:31,982 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CPU spike on host → Check CPU usage -> Inspect top processes -> Restart service if needed -> Verify load balancer distribution (confidence=0.91)
+---------------------------------------------------
+2026-03-06 23:02:31,982 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CrashLoopBackOff → Check pod logs -> Inspect recent deploys -> Rollback if necessary (confidence=0.87)
+---------------------------------------------------
+2026-03-06 23:02:31,982 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] High memory usage → Inspect memory profile -> Check for leaks -> Restart service (confidence=0.83)
+---------------------------------------------------
+2026-03-06 23:02:31,983 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host A', 'signals': ['cpu_usage']}
+Result:
+[summary] CPU spike on host A → signals: cpu_usage
+---------------------------------------------------
+2026-03-06 23:02:31,983 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host B
+
+2026-03-06 23:02:31,983 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-06 23:02:31,984 [DEBUG] IncidentAgent: Planner prompt: 
+You are an incident response agent.
+
+Current observation:
+CPU spike on host B
+
+Alert snapshot:
+{'jsonrpc': '2.0', 'id': '349288c0-70d7-4197-a8d5-328a1998ec9e', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-07', 'service': 'staging-api', 'symptom': 'CPU spike on node-3', 'severity': 'high'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.']}}}
+
+Relevant memory:
+Relevant past incidents:
+1. [observation] CPU spike on host B (91%)
+
+Recent activity:
+High Inspect Check Restart CPU A CPU B
+
+Available tools:
+1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+
+Based on this information, produce a step-by-step plan.
+        
+2026-03-06 23:02:31,984 [INFO] IncidentAgent: Plan returned by llm is: 
+1. run_diagnostic | schema=['host', 'check'] | Check CPU usage on host B
+2. run_diagnostic | schema=['host', 'check'] | Compare CPU metrics with previous incidents on host B
+3. retrieve_runbook | schema=['query', 'top_k'] | Fetch relevant runbook steps for CPU spike scenarios
+4. summarize_incident | schema=['title', 'signals'] | Summarize the findings
+
+2026-03-06 23:02:31,984 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-06 23:02:31,984 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=B, command=cpu_usage → status=ok, details=CPU usage on host B is 92%(latency=12.200000000000001ms)
+---------------------------------------------------
+2026-03-06 23:02:31,985 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'compare_previous'}
+Result:
+[diagnostic] host=B, command=compare_previous → status=ok, details=Current CPU usage on host B is similar to previous incident(latency=12.6ms)
+---------------------------------------------------
+2026-03-06 23:02:31,986 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CPU spike on host → Check CPU usage -> Inspect top processes -> Restart service if needed -> Verify load balancer distribution (confidence=0.91)
+---------------------------------------------------
+2026-03-06 23:02:31,986 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CrashLoopBackOff → Check pod logs -> Inspect recent deploys -> Rollback if necessary (confidence=0.87)
+---------------------------------------------------
+2026-03-06 23:02:31,986 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] High memory usage → Inspect memory profile -> Check for leaks -> Restart service (confidence=0.83)
+---------------------------------------------------
+2026-03-06 23:02:31,987 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host B', 'signals': ['cpu_usage']}
+Result:
+[summary] CPU spike on host B → signals: cpu_usage
+---------------------------------------------------
+2026-03-06 23:03:11,039 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-06 23:03:11,040 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-06 23:03:11,041 [INFO] IncidentAgent: ---------------------------------------------------
+2026-03-06 23:03:11,041 [DEBUG] IncidentAgent: Planner prompt: 
+You are an incident response agent.
+
+Current observation:
+CPU spike on host A
+
+Alert snapshot:
+{'jsonrpc': '2.0', 'id': '429a0086-e7a5-4123-9245-9c65d7149cef', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-07', 'service': 'staging-api', 'symptom': 'CPU spike on node-3', 'severity': 'high'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.']}}}
+
+Relevant memory:
+Relevant past incidents:
+1. [observation] CPU spike on host A (91%)
+
+Recent activity:
+CPU A
+
+Available tools:
+1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+
+Based on this information, produce a step-by-step plan.
+        
+2026-03-06 23:03:11,041 [INFO] IncidentAgent: ---------------------------------------------------
+2026-03-06 23:03:11,041 [INFO] IncidentAgent: Plan returned by llm is: 
+1. run_diagnostic | schema=['host', 'check'] | Check CPU usage on host A
+2. run_diagnostic | schema=['host', 'check'] | Compare CPU metrics with previous incidents on host A
+3. retrieve_runbook | schema=['query', 'top_k'] | Fetch relevant runbook steps for CPU spike scenarios
+4. summarize_incident | schema=['title', 'signals'] | Summarize the findings
+
+2026-03-06 23:03:11,041 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-06 23:03:11,042 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=A, command=cpu_usage → status=ok, details=CPU usage on host A is 92%(latency=9.5ms)
+---------------------------------------------------
+2026-03-06 23:03:11,043 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'compare_previous'}
+Result:
+[diagnostic] host=A, command=compare_previous → status=ok, details=Current CPU usage on host A is similar to previous incident(latency=10.4ms)
+---------------------------------------------------
+2026-03-06 23:03:11,043 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CPU spike on host → Check CPU usage -> Inspect top processes -> Restart service if needed -> Verify load balancer distribution (confidence=0.91)
+---------------------------------------------------
+2026-03-06 23:03:11,044 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CrashLoopBackOff → Check pod logs -> Inspect recent deploys -> Rollback if necessary (confidence=0.87)
+---------------------------------------------------
+2026-03-06 23:03:11,044 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] High memory usage → Inspect memory profile -> Check for leaks -> Restart service (confidence=0.83)
+---------------------------------------------------
+2026-03-06 23:03:11,044 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host A', 'signals': ['cpu_usage']}
+Result:
+[summary] CPU spike on host A → signals: cpu_usage
+---------------------------------------------------
+2026-03-06 23:03:11,044 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host B
+
+2026-03-06 23:03:11,045 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-06 23:03:11,045 [INFO] IncidentAgent: ---------------------------------------------------
+2026-03-06 23:03:11,046 [DEBUG] IncidentAgent: Planner prompt: 
+You are an incident response agent.
+
+Current observation:
+CPU spike on host B
+
+Alert snapshot:
+{'jsonrpc': '2.0', 'id': '177784e0-3c4b-4464-8296-1b26fb063c59', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-07', 'service': 'staging-api', 'symptom': 'CPU spike on node-3', 'severity': 'high'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.']}}}
+
+Relevant memory:
+Relevant past incidents:
+1. [observation] CPU spike on host B (91%)
+
+Recent activity:
+High Inspect Check Restart CPU A CPU B
+
+Available tools:
+1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+
+Based on this information, produce a step-by-step plan.
+        
+2026-03-06 23:03:11,046 [INFO] IncidentAgent: ---------------------------------------------------
+2026-03-06 23:03:11,046 [INFO] IncidentAgent: Plan returned by llm is: 
+1. run_diagnostic | schema=['host', 'check'] | Check CPU usage on host B
+2. run_diagnostic | schema=['host', 'check'] | Compare CPU metrics with previous incidents on host B
+3. retrieve_runbook | schema=['query', 'top_k'] | Fetch relevant runbook steps for CPU spike scenarios
+4. summarize_incident | schema=['title', 'signals'] | Summarize the findings
+
+2026-03-06 23:03:11,046 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-06 23:03:11,046 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=B, command=cpu_usage → status=ok, details=CPU usage on host B is 92%(latency=14.200000000000001ms)
+---------------------------------------------------
+2026-03-06 23:03:11,047 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'compare_previous'}
+Result:
+[diagnostic] host=B, command=compare_previous → status=ok, details=Current CPU usage on host B is similar to previous incident(latency=14.9ms)
+---------------------------------------------------
+2026-03-06 23:03:11,048 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CPU spike on host → Check CPU usage -> Inspect top processes -> Restart service if needed -> Verify load balancer distribution (confidence=0.91)
+---------------------------------------------------
+2026-03-06 23:03:11,048 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CrashLoopBackOff → Check pod logs -> Inspect recent deploys -> Rollback if necessary (confidence=0.87)
+---------------------------------------------------
+2026-03-06 23:03:11,048 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] High memory usage → Inspect memory profile -> Check for leaks -> Restart service (confidence=0.83)
+---------------------------------------------------
+2026-03-06 23:03:11,049 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host B', 'signals': ['cpu_usage']}
+Result:
+[summary] CPU spike on host B → signals: cpu_usage
+---------------------------------------------------
+2026-03-06 23:04:11,147 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-06 23:04:11,147 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-06 23:04:11,148 [DEBUG] IncidentAgent: Planner prompt:
+2026-03-06 23:04:11,148 [INFO] IncidentAgent: ---------------------------------------------------
+2026-03-06 23:04:11,148 [DEBUG] IncidentAgent: 
+You are an incident response agent.
+
+Current observation:
+CPU spike on host A
+
+Alert snapshot:
+{'jsonrpc': '2.0', 'id': 'a8b6587c-ee88-439c-9c63-2d435061a685', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-07', 'service': 'staging-api', 'symptom': 'CPU spike on node-3', 'severity': 'high'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.']}}}
+
+Relevant memory:
+Relevant past incidents:
+1. [observation] CPU spike on host A (91%)
+
+Recent activity:
+CPU A
+
+Available tools:
+1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+
+Based on this information, produce a step-by-step plan.
+        
+2026-03-06 23:04:11,148 [INFO] IncidentAgent: ---------------------------------------------------
+2026-03-06 23:04:11,148 [INFO] IncidentAgent: Plan returned by llm is: 
+1. run_diagnostic | schema=['host', 'check'] | Check CPU usage on host A
+2. run_diagnostic | schema=['host', 'check'] | Compare CPU metrics with previous incidents on host A
+3. retrieve_runbook | schema=['query', 'top_k'] | Fetch relevant runbook steps for CPU spike scenarios
+4. summarize_incident | schema=['title', 'signals'] | Summarize the findings
+
+2026-03-06 23:04:11,148 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-06 23:04:11,149 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=A, command=cpu_usage → status=ok, details=CPU usage on host A is 92%(latency=16.9ms)
+---------------------------------------------------
+2026-03-06 23:04:11,150 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'compare_previous'}
+Result:
+[diagnostic] host=A, command=compare_previous → status=ok, details=Current CPU usage on host A is similar to previous incident(latency=17.8ms)
+---------------------------------------------------
+2026-03-06 23:04:11,151 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CPU spike on host → Check CPU usage -> Inspect top processes -> Restart service if needed -> Verify load balancer distribution (confidence=0.91)
+---------------------------------------------------
+2026-03-06 23:04:11,152 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CrashLoopBackOff → Check pod logs -> Inspect recent deploys -> Rollback if necessary (confidence=0.87)
+---------------------------------------------------
+2026-03-06 23:04:11,152 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] High memory usage → Inspect memory profile -> Check for leaks -> Restart service (confidence=0.83)
+---------------------------------------------------
+2026-03-06 23:04:11,152 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host A', 'signals': ['cpu_usage']}
+Result:
+[summary] CPU spike on host A → signals: cpu_usage
+---------------------------------------------------
+2026-03-06 23:04:11,153 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host B
+
+2026-03-06 23:04:11,153 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-06 23:04:11,154 [DEBUG] IncidentAgent: Planner prompt:
+2026-03-06 23:04:11,154 [INFO] IncidentAgent: ---------------------------------------------------
+2026-03-06 23:04:11,154 [DEBUG] IncidentAgent: 
+You are an incident response agent.
+
+Current observation:
+CPU spike on host B
+
+Alert snapshot:
+{'jsonrpc': '2.0', 'id': 'afd41924-05ee-4636-9640-510a37b9c7c5', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-07', 'service': 'staging-api', 'symptom': 'CPU spike on node-3', 'severity': 'high'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.']}}}
+
+Relevant memory:
+Relevant past incidents:
+1. [observation] CPU spike on host B (91%)
+
+Recent activity:
+High Inspect Check Restart CPU A CPU B
+
+Available tools:
+1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+
+Based on this information, produce a step-by-step plan.
+        
+2026-03-06 23:04:11,154 [INFO] IncidentAgent: ---------------------------------------------------
+2026-03-06 23:04:11,154 [INFO] IncidentAgent: Plan returned by llm is: 
+1. run_diagnostic | schema=['host', 'check'] | Check CPU usage on host B
+2. run_diagnostic | schema=['host', 'check'] | Compare CPU metrics with previous incidents on host B
+3. retrieve_runbook | schema=['query', 'top_k'] | Fetch relevant runbook steps for CPU spike scenarios
+4. summarize_incident | schema=['title', 'signals'] | Summarize the findings
+
+2026-03-06 23:04:11,154 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-06 23:04:11,155 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=B, command=cpu_usage → status=ok, details=CPU usage on host B is 92%(latency=2.4ms)
+---------------------------------------------------
+2026-03-06 23:04:11,155 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'compare_previous'}
+Result:
+[diagnostic] host=B, command=compare_previous → status=ok, details=Current CPU usage on host B is similar to previous incident(latency=3.0ms)
+---------------------------------------------------
+2026-03-06 23:04:11,156 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CPU spike on host → Check CPU usage -> Inspect top processes -> Restart service if needed -> Verify load balancer distribution (confidence=0.91)
+---------------------------------------------------
+2026-03-06 23:04:11,156 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CrashLoopBackOff → Check pod logs -> Inspect recent deploys -> Rollback if necessary (confidence=0.87)
+---------------------------------------------------
+2026-03-06 23:04:11,156 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] High memory usage → Inspect memory profile -> Check for leaks -> Restart service (confidence=0.83)
+---------------------------------------------------
+2026-03-06 23:04:11,157 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host B', 'signals': ['cpu_usage']}
+Result:
+[summary] CPU spike on host B → signals: cpu_usage
+---------------------------------------------------
+2026-03-06 23:04:34,566 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-06 23:04:34,566 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-06 23:04:34,567 [DEBUG] IncidentAgent: Planner prompt:
+2026-03-06 23:04:34,567 [INFO] IncidentAgent: 
+---------------------------------------------------
+2026-03-06 23:04:34,567 [DEBUG] IncidentAgent: 
+You are an incident response agent.
+
+Current observation:
+CPU spike on host A
+
+Alert snapshot:
+{'jsonrpc': '2.0', 'id': '46567167-81b4-4eca-8880-5b9ac0db0ba1', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-07', 'service': 'staging-api', 'symptom': 'CPU spike on node-3', 'severity': 'high'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.']}}}
+
+Relevant memory:
+Relevant past incidents:
+1. [observation] CPU spike on host A (91%)
+
+Recent activity:
+CPU A
+
+Available tools:
+1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+
+Based on this information, produce a step-by-step plan.
+        
+2026-03-06 23:04:34,568 [INFO] IncidentAgent: ---------------------------------------------------
+2026-03-06 23:04:34,568 [INFO] IncidentAgent: Plan returned by llm is: 
+1. run_diagnostic | schema=['host', 'check'] | Check CPU usage on host A
+2. run_diagnostic | schema=['host', 'check'] | Compare CPU metrics with previous incidents on host A
+3. retrieve_runbook | schema=['query', 'top_k'] | Fetch relevant runbook steps for CPU spike scenarios
+4. summarize_incident | schema=['title', 'signals'] | Summarize the findings
+
+2026-03-06 23:04:34,568 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-06 23:04:34,569 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=A, command=cpu_usage → status=ok, details=CPU usage on host A is 92%(latency=16.2ms)
+---------------------------------------------------
+2026-03-06 23:04:34,569 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'compare_previous'}
+Result:
+[diagnostic] host=A, command=compare_previous → status=ok, details=Current CPU usage on host A is similar to previous incident(latency=17.2ms)
+---------------------------------------------------
+2026-03-06 23:04:34,570 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CPU spike on host → Check CPU usage -> Inspect top processes -> Restart service if needed -> Verify load balancer distribution (confidence=0.91)
+---------------------------------------------------
+2026-03-06 23:04:34,570 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CrashLoopBackOff → Check pod logs -> Inspect recent deploys -> Rollback if necessary (confidence=0.87)
+---------------------------------------------------
+2026-03-06 23:04:34,570 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] High memory usage → Inspect memory profile -> Check for leaks -> Restart service (confidence=0.83)
+---------------------------------------------------
+2026-03-06 23:04:34,571 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host A', 'signals': ['cpu_usage']}
+Result:
+[summary] CPU spike on host A → signals: cpu_usage
+---------------------------------------------------
+2026-03-06 23:04:34,571 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host B
+
+2026-03-06 23:04:34,571 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-06 23:04:34,572 [DEBUG] IncidentAgent: Planner prompt:
+2026-03-06 23:04:34,572 [INFO] IncidentAgent: 
+---------------------------------------------------
+2026-03-06 23:04:34,573 [DEBUG] IncidentAgent: 
+You are an incident response agent.
+
+Current observation:
+CPU spike on host B
+
+Alert snapshot:
+{'jsonrpc': '2.0', 'id': 'a0681042-7bdf-449f-b741-49b8a87fe80a', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-07', 'service': 'staging-api', 'symptom': 'CPU spike on node-3', 'severity': 'high'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.']}}}
+
+Relevant memory:
+Relevant past incidents:
+1. [observation] CPU spike on host B (91%)
+
+Recent activity:
+High Inspect Check Restart CPU A CPU B
+
+Available tools:
+1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+
+Based on this information, produce a step-by-step plan.
+        
+2026-03-06 23:04:34,573 [INFO] IncidentAgent: ---------------------------------------------------
+2026-03-06 23:04:34,573 [INFO] IncidentAgent: Plan returned by llm is: 
+1. run_diagnostic | schema=['host', 'check'] | Check CPU usage on host B
+2. run_diagnostic | schema=['host', 'check'] | Compare CPU metrics with previous incidents on host B
+3. retrieve_runbook | schema=['query', 'top_k'] | Fetch relevant runbook steps for CPU spike scenarios
+4. summarize_incident | schema=['title', 'signals'] | Summarize the findings
+
+2026-03-06 23:04:34,573 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-06 23:04:34,574 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=B, command=cpu_usage → status=ok, details=CPU usage on host B is 92%(latency=1.5ms)
+---------------------------------------------------
+2026-03-06 23:04:34,575 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'compare_previous'}
+Result:
+[diagnostic] host=B, command=compare_previous → status=ok, details=Current CPU usage on host B is similar to previous incident(latency=2.4ms)
+---------------------------------------------------
+2026-03-06 23:04:34,576 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CPU spike on host → Check CPU usage -> Inspect top processes -> Restart service if needed -> Verify load balancer distribution (confidence=0.91)
+---------------------------------------------------
+2026-03-06 23:04:34,576 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CrashLoopBackOff → Check pod logs -> Inspect recent deploys -> Rollback if necessary (confidence=0.87)
+---------------------------------------------------
+2026-03-06 23:04:34,576 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] High memory usage → Inspect memory profile -> Check for leaks -> Restart service (confidence=0.83)
+---------------------------------------------------
+2026-03-06 23:04:34,576 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host B', 'signals': ['cpu_usage']}
+Result:
+[summary] CPU spike on host B → signals: cpu_usage
+---------------------------------------------------
+2026-03-06 23:05:21,818 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-06 23:05:21,818 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-06 23:05:21,819 [DEBUG] IncidentAgent: Planner prompt:
+---------------------------------------------------
+2026-03-06 23:05:21,819 [DEBUG] IncidentAgent: 
+You are an incident response agent.
+
+Current observation:
+CPU spike on host A
+
+Alert snapshot:
+{'jsonrpc': '2.0', 'id': '8e95b0bf-c008-4b27-9c59-9e761ad89aa1', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-07', 'service': 'staging-api', 'symptom': 'CPU spike on node-3', 'severity': 'high'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.']}}}
+
+Relevant memory:
+Relevant past incidents:
+1. [observation] CPU spike on host A (91%)
+
+Recent activity:
+CPU A
+
+Available tools:
+1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+
+Based on this information, produce a step-by-step plan.
+        
+2026-03-06 23:05:21,819 [INFO] IncidentAgent: ---------------------------------------------------
+2026-03-06 23:05:21,819 [INFO] IncidentAgent: Plan returned by llm is: 
+1. run_diagnostic | schema=['host', 'check'] | Check CPU usage on host A
+2. run_diagnostic | schema=['host', 'check'] | Compare CPU metrics with previous incidents on host A
+3. retrieve_runbook | schema=['query', 'top_k'] | Fetch relevant runbook steps for CPU spike scenarios
+4. summarize_incident | schema=['title', 'signals'] | Summarize the findings
+
+2026-03-06 23:05:21,819 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-06 23:05:21,820 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=A, command=cpu_usage → status=ok, details=CPU usage on host A is 92%(latency=8.0ms)
+---------------------------------------------------
+2026-03-06 23:05:21,821 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'compare_previous'}
+Result:
+[diagnostic] host=A, command=compare_previous → status=ok, details=Current CPU usage on host A is similar to previous incident(latency=8.9ms)
+---------------------------------------------------
+2026-03-06 23:05:21,822 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CPU spike on host → Check CPU usage -> Inspect top processes -> Restart service if needed -> Verify load balancer distribution (confidence=0.91)
+---------------------------------------------------
+2026-03-06 23:05:21,822 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CrashLoopBackOff → Check pod logs -> Inspect recent deploys -> Rollback if necessary (confidence=0.87)
+---------------------------------------------------
+2026-03-06 23:05:21,822 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] High memory usage → Inspect memory profile -> Check for leaks -> Restart service (confidence=0.83)
+---------------------------------------------------
+2026-03-06 23:05:21,823 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host A', 'signals': ['cpu_usage']}
+Result:
+[summary] CPU spike on host A → signals: cpu_usage
+---------------------------------------------------
+2026-03-06 23:05:21,823 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host B
+
+2026-03-06 23:05:21,823 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-06 23:05:21,824 [DEBUG] IncidentAgent: Planner prompt:
+---------------------------------------------------
+2026-03-06 23:05:21,824 [DEBUG] IncidentAgent: 
+You are an incident response agent.
+
+Current observation:
+CPU spike on host B
+
+Alert snapshot:
+{'jsonrpc': '2.0', 'id': '08088097-0c27-4154-ae45-52452ebfd9b4', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-07', 'service': 'staging-api', 'symptom': 'CPU spike on node-3', 'severity': 'high'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.']}}}
+
+Relevant memory:
+Relevant past incidents:
+1. [observation] CPU spike on host B (91%)
+
+Recent activity:
+High Inspect Check Restart CPU A CPU B
+
+Available tools:
+1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+
+Based on this information, produce a step-by-step plan.
+        
+2026-03-06 23:05:21,824 [INFO] IncidentAgent: ---------------------------------------------------
+2026-03-06 23:05:21,824 [INFO] IncidentAgent: Plan returned by llm is: 
+1. run_diagnostic | schema=['host', 'check'] | Check CPU usage on host B
+2. run_diagnostic | schema=['host', 'check'] | Compare CPU metrics with previous incidents on host B
+3. retrieve_runbook | schema=['query', 'top_k'] | Fetch relevant runbook steps for CPU spike scenarios
+4. summarize_incident | schema=['title', 'signals'] | Summarize the findings
+
+2026-03-06 23:05:21,824 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-06 23:05:21,824 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=B, command=cpu_usage → status=ok, details=CPU usage on host B is 92%(latency=12.3ms)
+---------------------------------------------------
+2026-03-06 23:05:21,825 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'compare_previous'}
+Result:
+[diagnostic] host=B, command=compare_previous → status=ok, details=Current CPU usage on host B is similar to previous incident(latency=13.0ms)
+---------------------------------------------------
+2026-03-06 23:05:21,826 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CPU spike on host → Check CPU usage -> Inspect top processes -> Restart service if needed -> Verify load balancer distribution (confidence=0.91)
+---------------------------------------------------
+2026-03-06 23:05:21,826 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CrashLoopBackOff → Check pod logs -> Inspect recent deploys -> Rollback if necessary (confidence=0.87)
+---------------------------------------------------
+2026-03-06 23:05:21,826 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] High memory usage → Inspect memory profile -> Check for leaks -> Restart service (confidence=0.83)
+---------------------------------------------------
+2026-03-06 23:05:21,826 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host B', 'signals': ['cpu_usage']}
+Result:
+[summary] CPU spike on host B → signals: cpu_usage
+---------------------------------------------------
+2026-03-06 23:06:38,752 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-06 23:06:38,752 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-06 23:06:38,753 [DEBUG] IncidentAgent: Planner prompt:
+---------------------------------------------------
+2026-03-06 23:06:38,753 [DEBUG] IncidentAgent: 
+You are an incident response agent.
+
+Current observation:
+CPU spike on host A
+
+Alert snapshot:
+{'jsonrpc': '2.0', 'id': 'd02486de-cc94-452b-9e2a-7234e6d14d11', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-07', 'service': 'staging-api', 'symptom': 'CPU spike on node-3', 'severity': 'high'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.']}}}
+
+Relevant memory:
+Relevant past incidents:
+1. [observation] CPU spike on host A (91%)
+
+Recent activity:
+CPU A
+
+Available tools:
+1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+
+Based on this information, produce a step-by-step plan.
+        
+---------------------------------------------------
+2026-03-06 23:06:38,753 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-06 23:06:38,754 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=A, command=cpu_usage → status=ok, details=CPU usage on host A is 92%(latency=1.7ms)
+---------------------------------------------------
+2026-03-06 23:06:38,755 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'compare_previous'}
+Result:
+[diagnostic] host=A, command=compare_previous → status=ok, details=Current CPU usage on host A is similar to previous incident(latency=2.5ms)
+---------------------------------------------------
+2026-03-06 23:06:38,755 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CPU spike on host → Check CPU usage -> Inspect top processes -> Restart service if needed -> Verify load balancer distribution (confidence=0.91)
+---------------------------------------------------
+2026-03-06 23:06:38,756 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CrashLoopBackOff → Check pod logs -> Inspect recent deploys -> Rollback if necessary (confidence=0.87)
+---------------------------------------------------
+2026-03-06 23:06:38,756 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] High memory usage → Inspect memory profile -> Check for leaks -> Restart service (confidence=0.83)
+---------------------------------------------------
+2026-03-06 23:06:38,756 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host A', 'signals': ['cpu_usage']}
+Result:
+[summary] CPU spike on host A → signals: cpu_usage
+---------------------------------------------------
+2026-03-06 23:06:38,756 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host B
+
+2026-03-06 23:06:38,757 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-06 23:06:38,757 [DEBUG] IncidentAgent: Planner prompt:
+---------------------------------------------------
+2026-03-06 23:06:38,758 [DEBUG] IncidentAgent: 
+You are an incident response agent.
+
+Current observation:
+CPU spike on host B
+
+Alert snapshot:
+{'jsonrpc': '2.0', 'id': 'd200daa0-f101-4c06-b0fe-29ec1859c4b8', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-07', 'service': 'staging-api', 'symptom': 'CPU spike on node-3', 'severity': 'high'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.']}}}
+
+Relevant memory:
+Relevant past incidents:
+1. [observation] CPU spike on host B (91%)
+
+Recent activity:
+High Inspect Check Restart CPU A CPU B
+
+Available tools:
+1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+
+Based on this information, produce a step-by-step plan.
+        
+---------------------------------------------------
+2026-03-06 23:06:38,758 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-06 23:06:38,759 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=B, command=cpu_usage → status=ok, details=CPU usage on host B is 92%(latency=6.7ms)
+---------------------------------------------------
+2026-03-06 23:06:38,760 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'compare_previous'}
+Result:
+[diagnostic] host=B, command=compare_previous → status=ok, details=Current CPU usage on host B is similar to previous incident(latency=7.7ms)
+---------------------------------------------------
+2026-03-06 23:06:38,761 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CPU spike on host → Check CPU usage -> Inspect top processes -> Restart service if needed -> Verify load balancer distribution (confidence=0.91)
+---------------------------------------------------
+2026-03-06 23:06:38,761 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CrashLoopBackOff → Check pod logs -> Inspect recent deploys -> Rollback if necessary (confidence=0.87)
+---------------------------------------------------
+2026-03-06 23:06:38,761 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] High memory usage → Inspect memory profile -> Check for leaks -> Restart service (confidence=0.83)
+---------------------------------------------------
+2026-03-06 23:06:38,762 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host B', 'signals': ['cpu_usage']}
+Result:
+[summary] CPU spike on host B → signals: cpu_usage
+---------------------------------------------------
+2026-03-06 23:07:01,331 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-06 23:07:01,331 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-06 23:07:01,332 [DEBUG] IncidentAgent: Planner prompt:
+---------------------------------------------------
+
+2026-03-06 23:07:01,332 [DEBUG] IncidentAgent: 
+You are an incident response agent.
+
+Current observation:
+CPU spike on host A
+
+Alert snapshot:
+{'jsonrpc': '2.0', 'id': 'd495a491-a94a-4fa5-a86a-ba20c03ddcda', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-07', 'service': 'staging-api', 'symptom': 'CPU spike on node-3', 'severity': 'high'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.']}}}
+
+Relevant memory:
+Relevant past incidents:
+1. [observation] CPU spike on host A (91%)
+
+Recent activity:
+CPU A
+
+Available tools:
+1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+
+Based on this information, produce a step-by-step plan.
+        
+---------------------------------------------------
+2026-03-06 23:07:01,332 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-06 23:07:01,333 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=A, command=cpu_usage → status=ok, details=CPU usage on host A is 92%(latency=0.9ms)
+---------------------------------------------------
+2026-03-06 23:07:01,334 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'compare_previous'}
+Result:
+[diagnostic] host=A, command=compare_previous → status=ok, details=Current CPU usage on host A is similar to previous incident(latency=1.6ms)
+---------------------------------------------------
+2026-03-06 23:07:01,335 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CPU spike on host → Check CPU usage -> Inspect top processes -> Restart service if needed -> Verify load balancer distribution (confidence=0.91)
+---------------------------------------------------
+2026-03-06 23:07:01,335 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CrashLoopBackOff → Check pod logs -> Inspect recent deploys -> Rollback if necessary (confidence=0.87)
+---------------------------------------------------
+2026-03-06 23:07:01,335 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] High memory usage → Inspect memory profile -> Check for leaks -> Restart service (confidence=0.83)
+---------------------------------------------------
+2026-03-06 23:07:01,335 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host A', 'signals': ['cpu_usage']}
+Result:
+[summary] CPU spike on host A → signals: cpu_usage
+---------------------------------------------------
+2026-03-06 23:07:01,336 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host B
+
+2026-03-06 23:07:01,336 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-06 23:07:01,337 [DEBUG] IncidentAgent: Planner prompt:
+---------------------------------------------------
+
+2026-03-06 23:07:01,337 [DEBUG] IncidentAgent: 
+You are an incident response agent.
+
+Current observation:
+CPU spike on host B
+
+Alert snapshot:
+{'jsonrpc': '2.0', 'id': '3a1cad99-7733-4b92-a052-54c13badb6c1', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-07', 'service': 'staging-api', 'symptom': 'CPU spike on node-3', 'severity': 'high'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.']}}}
+
+Relevant memory:
+Relevant past incidents:
+1. [observation] CPU spike on host B (91%)
+
+Recent activity:
+High Inspect Check Restart CPU A CPU B
+
+Available tools:
+1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+
+Based on this information, produce a step-by-step plan.
+        
+---------------------------------------------------
+2026-03-06 23:07:01,337 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-06 23:07:01,338 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=B, command=cpu_usage → status=ok, details=CPU usage on host B is 92%(latency=6.0ms)
+---------------------------------------------------
+2026-03-06 23:07:01,339 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'compare_previous'}
+Result:
+[diagnostic] host=B, command=compare_previous → status=ok, details=Current CPU usage on host B is similar to previous incident(latency=6.7ms)
+---------------------------------------------------
+2026-03-06 23:07:01,340 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CPU spike on host → Check CPU usage -> Inspect top processes -> Restart service if needed -> Verify load balancer distribution (confidence=0.91)
+---------------------------------------------------
+2026-03-06 23:07:01,340 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CrashLoopBackOff → Check pod logs -> Inspect recent deploys -> Rollback if necessary (confidence=0.87)
+---------------------------------------------------
+2026-03-06 23:07:01,340 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] High memory usage → Inspect memory profile -> Check for leaks -> Restart service (confidence=0.83)
+---------------------------------------------------
+2026-03-06 23:07:01,341 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host B', 'signals': ['cpu_usage']}
+Result:
+[summary] CPU spike on host B → signals: cpu_usage
+---------------------------------------------------
+2026-03-07 08:01:45,582 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-07 08:01:45,583 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-07 08:01:45,583 [DEBUG] IncidentAgent: Planner prompt:
+---------------------------------------------------
+
+2026-03-07 08:01:45,584 [DEBUG] IncidentAgent: 
+You are an incident response agent.
+
+Current observation:
+CPU spike on host A
+
+Alert snapshot:
+{'jsonrpc': '2.0', 'id': '0fc9e62d-062b-416c-9266-4c25e2ed8a90', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-07', 'service': 'staging-api', 'symptom': 'CPU spike on node-3', 'severity': 'high'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.']}}}
+
+Relevant memory:
+Relevant past incidents:
+1. [observation] CPU spike on host A (91%)
+
+Recent activity:
+CPU A
+
+Available tools:
+1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+
+Based on this information, produce a step-by-step plan.
+        
+---------------------------------------------------
+2026-03-07 08:01:45,584 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-07 08:01:45,585 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=A, command=cpu_usage → status=ok, details=CPU usage on host A is 92%(latency=10.9ms)
+---------------------------------------------------
+2026-03-07 08:01:45,586 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'compare_previous'}
+Result:
+[diagnostic] host=A, command=compare_previous → status=ok, details=Current CPU usage on host A is similar to previous incident(latency=12.0ms)
+---------------------------------------------------
+2026-03-07 08:01:45,588 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CPU spike on host → Check CPU usage -> Inspect top processes -> Restart service if needed -> Verify load balancer distribution (confidence=0.91)
+---------------------------------------------------
+2026-03-07 08:01:45,588 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CrashLoopBackOff → Check pod logs -> Inspect recent deploys -> Rollback if necessary (confidence=0.87)
+---------------------------------------------------
+2026-03-07 08:01:45,588 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] High memory usage → Inspect memory profile -> Check for leaks -> Restart service (confidence=0.83)
+---------------------------------------------------
+2026-03-07 08:01:45,589 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host A', 'signals': ['cpu_usage']}
+Result:
+[summary] CPU spike on host A → signals: cpu_usage
+---------------------------------------------------
+2026-03-07 08:01:45,589 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host B
+
+2026-03-07 08:01:45,590 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-07 08:01:45,590 [DEBUG] IncidentAgent: Planner prompt:
+---------------------------------------------------
+
+2026-03-07 08:01:45,591 [DEBUG] IncidentAgent: 
+You are an incident response agent.
+
+Current observation:
+CPU spike on host B
+
+Alert snapshot:
+{'jsonrpc': '2.0', 'id': '0fdf2a70-d951-4437-90ae-2b58702e89d0', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-07', 'service': 'staging-api', 'symptom': 'CPU spike on node-3', 'severity': 'high'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.']}}}
+
+Relevant memory:
+Relevant past incidents:
+1. [observation] CPU spike on host B (91%)
+
+Recent activity:
+High Inspect Check Restart CPU A CPU B
+
+Available tools:
+1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+
+Based on this information, produce a step-by-step plan.
+        
+---------------------------------------------------
+2026-03-07 08:01:45,591 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-07 08:01:45,591 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=B, command=cpu_usage → status=ok, details=CPU usage on host B is 92%(latency=17.2ms)
+---------------------------------------------------
+2026-03-07 08:01:45,592 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'compare_previous'}
+Result:
+[diagnostic] host=B, command=compare_previous → status=ok, details=Current CPU usage on host B is similar to previous incident(latency=17.9ms)
+---------------------------------------------------
+2026-03-07 08:01:45,593 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CPU spike on host → Check CPU usage -> Inspect top processes -> Restart service if needed -> Verify load balancer distribution (confidence=0.91)
+---------------------------------------------------
+2026-03-07 08:01:45,593 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CrashLoopBackOff → Check pod logs -> Inspect recent deploys -> Rollback if necessary (confidence=0.87)
+---------------------------------------------------
+2026-03-07 08:01:45,593 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] High memory usage → Inspect memory profile -> Check for leaks -> Restart service (confidence=0.83)
+---------------------------------------------------
+2026-03-07 08:01:45,594 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host B', 'signals': ['cpu_usage']}
+Result:
+[summary] CPU spike on host B → signals: cpu_usage
+---------------------------------------------------
+2026-03-07 08:01:45,594 [INFO] IncidentAgent: Incident Agent called with prompt : Repeted restart of container instance 1
+
+2026-03-07 08:01:45,594 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-07 08:01:45,595 [DEBUG] IncidentAgent: Planner prompt:
+---------------------------------------------------
+
+2026-03-07 08:01:45,595 [DEBUG] IncidentAgent: 
+You are an incident response agent.
+
+Current observation:
+Repeted restart of container instance 1
+
+Alert snapshot:
+{'jsonrpc': '2.0', 'id': 'b8a3a92e-e52d-4e3f-994d-a9b847910415', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-07', 'service': 'staging-api', 'symptom': 'CPU spike on node-3', 'severity': 'high'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.']}}}
+
+Relevant memory:
+Relevant past incidents:
+1. [observation] Repeted restart of container instance 1 (93%)
+
+Recent activity:
+CPU B CPU B Repeted 1
+
+Available tools:
+1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+
+Based on this information, produce a step-by-step plan.
+        
+---------------------------------------------------
+2026-03-07 08:01:45,595 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-07 08:01:45,595 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'UNKNOWN', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=UNKNOWN, command=cpu_usage → status=ok, details=CPU usage on host UNKNOWN is 92%(latency=1.3ms)
+---------------------------------------------------
+2026-03-07 08:01:45,596 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'UNKNOWN', 'check': 'top_processes'}
+Result:
+[diagnostic] host=UNKNOWN, command=top_processes → status=ok, details=Top processes on host UNKNOWN: riskengine(55%), reporter(30%), nginx(12%)(latency=1.8ms)
+---------------------------------------------------
+2026-03-07 08:01:45,596 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CPU spike on host → Check CPU usage -> Inspect top processes -> Restart service if needed -> Verify load balancer distribution (confidence=0.91)
+---------------------------------------------------
+2026-03-07 08:01:45,596 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CrashLoopBackOff → Check pod logs -> Inspect recent deploys -> Rollback if necessary (confidence=0.87)
+---------------------------------------------------
+2026-03-07 08:01:45,596 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] High memory usage → Inspect memory profile -> Check for leaks -> Restart service (confidence=0.83)
+---------------------------------------------------
+2026-03-07 08:01:45,597 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host UNKNOWN', 'signals': ['cpu_usage']}
+Result:
+[summary] CPU spike on host UNKNOWN → signals: cpu_usage
+---------------------------------------------------
+2026-03-07 08:16:09,425 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-07 08:16:09,425 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-07 08:17:26,491 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-07 08:17:26,491 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-07 08:17:51,412 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-07 08:17:51,412 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-07 08:18:14,970 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-07 08:18:14,970 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-07 08:18:39,602 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-07 08:18:39,603 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-07 08:19:12,394 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-07 08:19:12,394 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-07 08:19:12,395 [DEBUG] IncidentAgent: Planner prompt:
+---------------------------------------------------
+
+2026-03-07 08:19:12,395 [DEBUG] IncidentAgent: 
+You are an incident response agent.
+
+Current observation:
+CPU spike on host A
+
+Alert snapshot:
+{'jsonrpc': '2.0', 'id': 'e3e1c419-9960-49c1-a9f7-dfc7e25d8f26', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-18', 'service': 'app-insights', 'symptom': 'Service unavailable', 'severity': 'low'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.', 'If service unavaiale, try restarting first.']}}}
+
+Relevant memory:
+Relevant past incidents:
+1. [observation] CPU spike on host A (91%)
+
+Recent activity:
+CPU A
+
+Available tools:
+1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+
+Based on this information, produce a step-by-step plan.
+        
+---------------------------------------------------
+2026-03-07 08:19:12,395 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-07 08:19:12,397 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=A, command=cpu_usage → status=ok, details=CPU usage on host A is 92%(latency=17.8ms)
+---------------------------------------------------
+2026-03-07 08:19:12,398 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'compare_previous'}
+Result:
+[diagnostic] host=A, command=compare_previous → status=ok, details=Current CPU usage on host A is similar to previous incident(latency=19.3ms)
+---------------------------------------------------
+2026-03-07 08:19:12,399 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CPU Spike → Check CPU usage -> Inspect top processes -> Restart service if needed -> Verify load balancer distribution (confidence=0.91)
+---------------------------------------------------
+2026-03-07 08:19:12,400 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host A', 'signals': ['cpu_usage']}
+Result:
+[summary] CPU spike on host A → signals: cpu_usage
+---------------------------------------------------
+2026-03-07 08:19:12,400 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host B
+
+2026-03-07 08:19:12,400 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-07 08:19:12,401 [DEBUG] IncidentAgent: Planner prompt:
+---------------------------------------------------
+
+2026-03-07 08:19:12,401 [DEBUG] IncidentAgent: 
+You are an incident response agent.
+
+Current observation:
+CPU spike on host B
+
+Alert snapshot:
+{'jsonrpc': '2.0', 'id': 'f96e1829-2436-4079-a787-43b1d13c393c', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-18', 'service': 'app-insights', 'symptom': 'Service unavailable', 'severity': 'low'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.', 'If service unavaiale, try restarting first.']}}}
+
+Relevant memory:
+Relevant past incidents:
+1. [observation] CPU spike on host B (91%)
+
+Recent activity:
+CPU Spike Check CPU Inspect Restart Verify CPU A CPU B
+
+Available tools:
+1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+
+Based on this information, produce a step-by-step plan.
+        
+---------------------------------------------------
+2026-03-07 08:19:12,401 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-07 08:19:12,402 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=B, command=cpu_usage → status=ok, details=CPU usage on host B is 92%(latency=3.5ms)
+---------------------------------------------------
+2026-03-07 08:19:12,404 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'compare_previous'}
+Result:
+[diagnostic] host=B, command=compare_previous → status=ok, details=Current CPU usage on host B is similar to previous incident(latency=4.7ms)
+---------------------------------------------------
+2026-03-07 08:19:12,404 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CPU Spike → Check CPU usage -> Inspect top processes -> Restart service if needed -> Verify load balancer distribution (confidence=0.91)
+---------------------------------------------------
+2026-03-07 08:19:12,405 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host B', 'signals': ['cpu_usage']}
+Result:
+[summary] CPU spike on host B → signals: cpu_usage
+---------------------------------------------------
+2026-03-07 08:19:12,405 [INFO] IncidentAgent: Incident Agent called with prompt : Repeated restart of container instance 1
+
+2026-03-07 08:19:12,406 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-07 08:19:12,406 [DEBUG] IncidentAgent: Planner prompt:
+---------------------------------------------------
+
+2026-03-07 08:19:12,406 [DEBUG] IncidentAgent: 
+You are an incident response agent.
+
+Current observation:
+Repeated restart of container instance 1
+
+Alert snapshot:
+{'jsonrpc': '2.0', 'id': '7feaa022-c4cc-4055-ab8d-306043ca4f40', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-18', 'service': 'app-insights', 'symptom': 'Service unavailable', 'severity': 'low'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.', 'If service unavaiale, try restarting first.']}}}
+
+Relevant memory:
+Relevant past incidents:
+1. [observation] Repeated restart of container instance 1 (93%)
+
+Recent activity:
+CPU B CPU B Repeated 1
+
+Available tools:
+1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+
+Based on this information, produce a step-by-step plan.
+        
+---------------------------------------------------
+2026-03-07 08:19:12,407 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-07 08:19:12,407 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'UNKNOWN', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=UNKNOWN, command=cpu_usage → status=ok, details=CPU usage on host UNKNOWN is 92%(latency=8.5ms)
+---------------------------------------------------
+2026-03-07 08:19:12,408 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'UNKNOWN', 'check': 'top_processes'}
+Result:
+[diagnostic] host=UNKNOWN, command=top_processes → status=ok, details=Top processes on host UNKNOWN: riskengine(55%), reporter(30%), nginx(12%)(latency=9.0ms)
+---------------------------------------------------
+2026-03-07 08:19:12,408 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'CPU spike', 'top_k': 3}
+Result:
+[runbook] CPU Spike → Check CPU usage -> Inspect top processes -> Restart service if needed -> Verify load balancer distribution (confidence=0.91)
+---------------------------------------------------
+2026-03-07 08:19:12,409 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'title': 'CPU spike on host UNKNOWN', 'signals': ['cpu_usage']}
+Result:
+[summary] CPU spike on host UNKNOWN → signals: cpu_usage
+---------------------------------------------------
+2026-03-07 08:31:29,935 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host A
+
+2026-03-07 08:31:29,935 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-07 08:31:29,936 [DEBUG] IncidentAgent: Planner prompt:
+---------------------------------------------------
+
+2026-03-07 08:31:29,936 [DEBUG] IncidentAgent: 
+You are an incident response agent.
+
+Current observation:
+CPU spike on host A
+
+Alert snapshot:
+{'jsonrpc': '2.0', 'id': '327a050c-1377-4ddd-97d2-8162f5893352', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-18', 'service': 'app-insights', 'symptom': 'Service unavailable', 'severity': 'low'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.', 'If service unavaiale, try restarting first.']}}}
+
+Relevant memory:
+Relevant past incidents:
+1. [observation] CPU spike on host A (91%)
+
+Recent activity:
+CPU A
+
+Available tools:
+1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+
+Based on this information, produce a step-by-step plan.
+        
+---------------------------------------------------
+2026-03-07 08:31:29,936 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-07 08:31:29,938 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=A, command=cpu_usage → status=ok, details=CPU usage on host A is 92%(latency=16.5ms)
+---------------------------------------------------
+2026-03-07 08:31:29,939 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'A', 'check': 'compare_previous'}
+Result:
+[diagnostic] host=A, command=compare_previous → status=ok, details=Current CPU usage on host A is similar to previous incident(latency=17.8ms)
+---------------------------------------------------
+2026-03-07 08:31:29,940 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'cpu spike', 'top_k': 3}
+Result:
+[runbook] CPU Spike → Check CPU usage -> Inspect top processes -> Restart service if needed -> Verify load balancer distribution (confidence=0.91)
+---------------------------------------------------
+2026-03-07 08:31:29,940 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'alert_id': 'CPU spike on host A', 'evidence': []}
+Result:
+[summary] None → signals: 
+---------------------------------------------------
+2026-03-07 08:31:29,940 [INFO] IncidentAgent: Incident Agent called with prompt : CPU spike on host B
+
+2026-03-07 08:31:29,941 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-07 08:31:29,941 [DEBUG] IncidentAgent: Planner prompt:
+---------------------------------------------------
+
+2026-03-07 08:31:29,942 [DEBUG] IncidentAgent: 
+You are an incident response agent.
+
+Current observation:
+CPU spike on host B
+
+Alert snapshot:
+{'jsonrpc': '2.0', 'id': '944702a8-0591-4cdc-a1b6-60730d73393a', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-18', 'service': 'app-insights', 'symptom': 'Service unavailable', 'severity': 'low'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.', 'If service unavaiale, try restarting first.']}}}
+
+Relevant memory:
+Relevant past incidents:
+1. [observation] CPU spike on host B (91%)
+
+Recent activity:
+CPU Spike Check CPU Inspect Restart Verify None CPU B
+
+Available tools:
+1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+
+Based on this information, produce a step-by-step plan.
+        
+---------------------------------------------------
+2026-03-07 08:31:29,942 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-07 08:31:29,942 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'cpu_usage'}
+Result:
+[diagnostic] host=B, command=cpu_usage → status=ok, details=CPU usage on host B is 92%(latency=1.0ms)
+---------------------------------------------------
+2026-03-07 08:31:29,944 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: run_diagnostic
+Payload:
+{'host': 'B', 'check': 'compare_previous'}
+Result:
+[diagnostic] host=B, command=compare_previous → status=ok, details=Current CPU usage on host B is similar to previous incident(latency=2.3ms)
+---------------------------------------------------
+2026-03-07 08:31:29,945 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 3: retrieve_runbook
+Payload:
+{'query': 'cpu spike', 'top_k': 3}
+Result:
+[runbook] CPU Spike → Check CPU usage -> Inspect top processes -> Restart service if needed -> Verify load balancer distribution (confidence=0.91)
+---------------------------------------------------
+2026-03-07 08:31:29,946 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 4: summarize_incident
+Payload:
+{'alert_id': 'CPU spike on host B', 'evidence': []}
+Result:
+[summary] None → signals: 
+---------------------------------------------------
+2026-03-07 08:31:29,946 [INFO] IncidentAgent: Incident Agent called with prompt : Repeated restart of container instance 1 in host A
+
+2026-03-07 08:31:29,947 [DEBUG] IncidentAgent: dict_keys(['tools', 'resources'])
+2026-03-07 08:31:29,947 [DEBUG] IncidentAgent: Planner prompt:
+---------------------------------------------------
+
+2026-03-07 08:31:29,947 [DEBUG] IncidentAgent: 
+You are an incident response agent.
+
+Current observation:
+Repeated restart of container instance 1 in host A
+
+Alert snapshot:
+{'jsonrpc': '2.0', 'id': 'c225a882-c647-4ac6-88fc-284a22e37fe9', 'result': {'uri': 'memory://alerts/latest', 'data': {'alert': {'id': 'ALRT-2025-18', 'service': 'app-insights', 'symptom': 'Service unavailable', 'severity': 'low'}, 'recommendations': ['Restart the service if CPU > 90% for 5 minutes.', 'If pods crashloop, capture logs before redeploying.', 'If service unavaiale, try restarting first.']}}}
+
+Relevant memory:
+Relevant past incidents:
+1. [observation] Repeated restart of container instance 1 in host A (95%)
+
+Recent activity:
+B CPU B Repeated 1 A
+
+Available tools:
+1. run_diagnostic(type, properties, required)
+2. retrieve_runbook(type, title, description, properties, required)
+3. summarize_incident(type, properties, required)
+
+Based on this information, produce a step-by-step plan.
+        
+---------------------------------------------------
+2026-03-07 08:31:29,947 [INFO] IncidentAgent: Running through the PlanSteps returned by LLMPlanner
+2026-03-07 08:31:29,948 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 1: retrieve_runbook
+Payload:
+{'query': 'general troubleshooting', 'top_k': 1}
+Result:
+[runbook] General Troubleshooting → Check logs -> Verify configuration -> Restart service -> Escalate if issue persists (confidence=0.75)
+---------------------------------------------------
+2026-03-07 08:31:29,949 [INFO] IncidentAgent: 
+---------------------------------------------------
+Step 2: summarize_incident
+Payload:
+{'alert_id': 'Unknown issue', 'evidence': []}
+Result:
+[summary] None → signals: 
+---------------------------------------------------

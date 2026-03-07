@@ -4,11 +4,7 @@ from ..models import ToolMetadata, ToolDefinition
 SUMMARIZE_INCIDENT_DEF = ToolDefinition(
     metadata=ToolMetadata(
         name="summarize_incident",
-        description="Summarize an incident using alert ID and evidence.",
-        expected_latency_ms=80,
-        cost_units=1,
-        risk_level="low",
-        side_effects="read-only",
+        description="Summarize an incident using alert ID and evidence."
     ),
     input_schema={
         "type": "object",

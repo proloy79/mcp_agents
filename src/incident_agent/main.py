@@ -19,6 +19,8 @@ async def main():
         await agent.handle_incident(observation)
         observation = Observation("CPU spike on host B", 2)
         await agent.handle_incident(observation)
+        observation = Observation("Repeated restart of container instance 1 in host A", 3)
+        await agent.handle_incident(observation)
         
 if __name__ == "__main__":
     asyncio.run(main())
