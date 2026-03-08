@@ -32,7 +32,7 @@ class Orchestrator:
             
     async def handle_incident(self, observation: Observation) -> List[str]:
         self.logger.info(f"Incident Agent called with prompt : {observation.text}\n")
-        output:List[str] = []
+        outputs:List[Dict[str, str]] = []
         self.memory.add(f"[observation] {observation.text}")
         memory_snippet = self.memory.build_memory_snippet(query=observation.text, k=1, n=3)  
         self.logger.debug(self.client.capabilities.keys())
@@ -53,14 +53,6 @@ class Orchestrator:
 
         #self.logger.info(f"Plan returned by llm is: \n{render_plan(plan["steps"])}\n")
 
-        tasks = self._build_tasks_from_plan(plan["steps"])
-        graph = TaskGraph(tasks)
-        results = await graph.run(context={})
-        #self.logger.debug(f"TaskGraphoutput: {results}")
-        #self.logger.info('---------------------------------------------------')
-        self.logger.info('Running through the PlanSteps returned by LLMPlanner')
-        #self.logger.info('---------------------------------------------------')
-        
         if "errors" in plan and plan["errors"]:            
             self.logger.info(
                 "\n"
@@ -69,8 +61,16 @@ class Orchestrator:
                 f"Error:\n{json.dumps(plan["errors"], indent=4)}\n"
                 "---------------------------------------------------"
             )            
-            return  # or raise, or fallback
-                
+            return  plan, []
+
+        tasks = self._build_tasks_from_plan(plan["steps"])
+        graph = TaskGraph(tasks)
+        results = await graph.run(context={})
+        #self.logger.debug(f"TaskGraphoutput: {results}")
+        #self.logger.info('---------------------------------------------------')
+        self.logger.info('Running through the PlanSteps returned by LLMPlanner')
+        #self.logger.info('---------------------------------------------------')
+        
         for stepNo, step in enumerate(plan["steps"], start=1):
             if step.call_type != "tool_call":
                 continue
@@ -84,16 +84,11 @@ class Orchestrator:
                     
             for text in self._result_as_text(step.tool_name, step.input_schema, step_result.value):
                 self.memory.add(text)
-                output.append(
-                    #"\n"
-                    #"---------------------------------------------------\n"
-                    f"Step {stepNo}: {step.tool_name}\n"
-                    f"Payload {stepNo}:\n\t{step.input_schema}\n"
-                    f"Result {stepNo}:\n\t{text}")
-                    #"---------------------------------------------------")                
+                outputs.append({"turn": stepNo, "tool": step.tool_name, "result": text})
+                            
             
         #self.logger.debug(f"Memory snapshot: {self.memory.to_json()}")
-        return output
+        return plan, outputs
 
     def _build_planner_prompt(self, observation, alert_snapshot, memory_snippet, tools):
         """
