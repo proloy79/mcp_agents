@@ -141,9 +141,7 @@ class EdgeRunner:
         audit_dir = os.path.expanduser(self.audit_dir)
         audit_dir = os.path.join(audit_dir, str(uuid.uuid4()))
         os.makedirs(audit_dir)
-        audit_path = os.path.join(audit_dir, "audit.jsonl")
-        trace = TraceWriter(audit_path)
-        audit = os.path.join(audit_path, "audit.jsonl")  # Audit path.
+        audit = os.path.join(audit_dir, "audit.jsonl")  # Audit path.
 
         events.append(TraceEvent(
                 timestamp = datetime.now(timezone.utc).isoformat(),                

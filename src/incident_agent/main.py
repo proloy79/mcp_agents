@@ -5,7 +5,7 @@ from workflow.observation import Observation
 from logging_config import setup_logging
 import logging
 
-ENDPOINT = "ws://localhost:8765/mcp" # local MCP server address
+ENDPOINT = "ws://localhost:8765/mcp" # "wss://operator-spoken-tracks-election.trycloudflare.com/mcp" 
 CLIENT_VERSION="1.0.0"
 
 async def main():
