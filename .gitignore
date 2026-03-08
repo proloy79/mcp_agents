@@ -4,5 +4,7 @@ __pycache__/
 data/cache/
 checkpoints/
 runs/
+logs/
 *.pt
 *.pth
+*.ipynb_checkpoint
