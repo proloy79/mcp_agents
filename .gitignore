@@ -2,9 +2,8 @@ __pycache__/
 *.pyc
 .venv/
 data/cache/
-checkpoints/
+.ipynb_checkpoints/
 runs/
 logs/
 *.pt
 *.pth
-*.ipynb_checkpoint
