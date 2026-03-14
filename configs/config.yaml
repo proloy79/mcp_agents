@@ -1,0 +1,24 @@
+defaults:
+  - _self_
+  - tools/specs@tools.specs:
+      - run_diagnostics
+      - retrieve_runbook
+      - summarize_incident
+  - logging: logging
+
+hydra:
+  job_logging:
+    root:
+      handlers: []
+    disable_existing_loggers: false
+  hydra_logging:
+    disable_existing_loggers: true
+
+audit_root: ~/tmp/audit/incident_agent/
+mcp_endpoint: ws://localhost:8765/mcp
+replay: False
+trace_file: ~/projects/incident_agent/tests/replay/traces/cpu_spike_A/audit.jsonl
+
+shared:
+    max_turns: 15
+    cpu_ms: 5000

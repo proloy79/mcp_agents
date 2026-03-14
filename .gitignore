@@ -7,3 +7,5 @@ runs/
 logs/
 *.pt
 *.pth
+outputs/
+.hydra/

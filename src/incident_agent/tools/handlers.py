@@ -87,39 +87,74 @@ async def run_diagnostic_handler(payload: dict) -> dict:
 
 
 
+def _format_evidence_item(item):
+    """Convert evidence dicts into readable bullet points."""
+    if isinstance(item, dict):
+        parts = []
+        for k, v in item.items():
+            parts.append(f"{k}: {v}")
+        return ", ".join(parts)
+    return str(item)
+
+
 async def summarize_incident_handler(payload: dict) -> dict:
     alert_id = payload.get("alert_id", "UNKNOWN")
     evidence = payload.get("evidence", [])
+    req = payload.get("summary_requirements", {})
 
-    # Build the summary
+    _logger.debug(f"summarize_incident_handler -> payload={payload}")
+
+    text_tokens = []
+    for item in evidence:
+        if isinstance(item, dict):
+            for v in item.values():
+                if isinstance(v, str):
+                    text_tokens.append(v.lower())
+        elif isinstance(item, str):
+            text_tokens.append(item.lower())
+
+    combined = " ".join(text_tokens)
+
+    severity = "medium"
+    if any(x in combined for x in ["95%", "92%", "cpu spike", "high cpu"]):
+        severity = "high"
+
+    likely_cause = "unknown"
+    if "cpu spike" in combined:
+        likely_cause = "cpu overload"
+    elif "python" in combined:
+        likely_cause = "python process"
+    elif "db" in combined:
+        likely_cause = "database load"
+
     lines = [
         f"Incident Summary for alert {alert_id}",
         "",
         "Evidence collected:"
     ]
 
-    stdout_texts = []
     for item in evidence:
-        tool = item.get("tool")
-        result = item.get("result", {})
-        stdout = result.get("data", {}).get("stdout", "")
-        stdout_texts.append(stdout)
-        lines.append(f"- {tool}: {stdout}")
+        formatted = _format_evidence_item(item)
+        lines.append(f"- {formatted}")
+
+    if req.get("include_root_cause") and likely_cause != "unknown":
+        lines.append("")
+        lines.append(f"Likely root cause: {likely_cause}")
+
+    if req.get("include_recommended_actions"):
+        lines.append("")
+        lines.append("Recommended next actions:")
+        if likely_cause == "cpu overload":
+            lines.append("- Check top CPU-consuming processes")
+            lines.append("- Validate autoscaling or load distribution")
+        elif likely_cause == "database load":
+            lines.append("- Inspect slow queries")
+            lines.append("- Check DB connection saturation")
+        else:
+            lines.append("- Continue investigation based on new evidence")
 
     summary_text = "\n".join(lines)
-
-    severity = "medium"
-    likely_cause = "unknown"
-
-    combined = " ".join(stdout_texts).lower()
-
-    if "95%" in combined or "92%" in combined:
-        severity = "high"
-    if "python" in combined:
-        likely_cause = "python process"
-    if "db" in combined:
-        likely_cause = "database load"
-
+    
     return {
         "summary": summary_text,
         "severity": severity,

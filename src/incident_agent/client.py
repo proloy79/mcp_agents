@@ -47,6 +47,7 @@ class Client:
         return json.loads(response)
         
     async def call_tool(self, name:str, arguments:str) -> Any:
+        self.logger.info(f"Calling '{name}' with agrs '{arguments}'")
         params = {"name": name, "arguments": arguments}
         return await self._send_request(RequestType.TOOL_CALL, params)
 

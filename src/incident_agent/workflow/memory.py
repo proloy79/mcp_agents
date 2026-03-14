@@ -1,6 +1,7 @@
 from typing import Any, Dict, List, Tuple
 import numpy as np
 import logging
+from logging_config import sep
 from dataclasses import dataclass,asdict
 import json
 
@@ -8,6 +9,7 @@ import json
 class MemoryText:
     text: str
 
+KEYWORDS = {"spike", "error", "failure", "timeout", "latency"} #@TODO: to be removed when testing real scenarios
     
 class Memory:
     def __init__(self):
@@ -80,6 +82,8 @@ class Memory:
         Take last n prompts,vectorize and keep the digits and capital words or words starting with capitals
         If none of these occur take the top max_wors count of most common words
         """
+        self.logger.debug(self.entries)
+        
         # Very small summary: take last n entries and keep key tokens.
         last = [e.text for e in self.entries[-n:]]
         joined = " ".join(last)
@@ -88,7 +92,12 @@ class Memory:
         keep: List[str] = []
         for frag in last:
             for w in frag.split():
-                if w.isdigit() or (w[:1].isupper() and w[1:].islower()) or w.isupper():
+                if (
+                    w.isdigit()
+                    or (w[:1].isupper() and w[1:].islower())
+                    or w.isupper()
+                    or w.lower() in KEYWORDS
+                ):
                     keep.append(w)
         # Fallback to frequent tokens if keep is empty.
         if not keep:
@@ -127,7 +136,9 @@ class Memory:
             "Recent activity:\n"
             f"{formatted_recent}"
         )
-    
+        self.logger.info(f"Memory snippet for top_k={k} and last_={n}: \n{sep("-")}")
+        self.logger.info(f"{snippet}\n{sep("-")}")
+        
         return snippet
         
     def to_json(self) -> str:

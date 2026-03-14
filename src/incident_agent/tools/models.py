@@ -1,6 +1,6 @@
 from typing import List, Dict, Any, Optional, Callable
 from pydantic import BaseModel
-from dataclasses import dataclass  # Lightweight data containers.
+from dataclasses import dataclass, field  # Lightweight data containers.
 
 class ToolMetadata(BaseModel):
     name: str
@@ -17,7 +17,7 @@ class ToolDefinition(BaseModel):
 @dataclass  # Describe how a tool should be called.
 class ToolExecutionSpec:
     name: str  # Logical tool name for logs.
-    arguments: Dict[str, str]  # Expected payload keys → human type hints.
+    arguments: Dict[str, str] =  field(default_factory=dict) # Expected payload keys → human type hints.
     timeout_ms: int = 200  # Max time per attempt in milliseconds.
     max_retries: int = 2  # Attempts after the first try.
     backoff_ms: int = 50  # Initial backoff between retries in ms.

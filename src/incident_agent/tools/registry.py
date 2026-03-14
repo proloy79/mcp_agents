@@ -1,3 +1,4 @@
+from omegaconf import DictConfig
 from .tool_executor import ToolExecutor
 from .models import ToolDefinition, ToolExecutionSpec
 from .tool_executor import CircuitBreaker
@@ -17,7 +18,7 @@ class ToolDefinitionRegistry:
 
 class ToolSpecRegistry:
     def __init__(self):
-        self._run_specs = {}
+        self._run_specs: Dict[str,ToolExecutionSpec]  = {}
 
     def register(self, name: str, spec: ToolExecutionSpec):
         self._run_specs[name] = spec
@@ -28,6 +29,7 @@ class ToolSpecRegistry:
 class ToolExecutionRegistry:
     def __init__(self, definition_registry: ToolDefinitionRegistry, run_spec: ToolSpecRegistry, mcp_client):
         self.mcp_client = mcp_client
+        print(run_spec)
         self.tool_executors = {
             name: ToolExecutor(
                 definition=definition,
@@ -37,6 +39,20 @@ class ToolExecutionRegistry:
             )
             for name, definition in definition_registry._definitions.items()
         }
-
+        
     def execute(self, tool_name: str, args: dict):
         return self.tool_executors[tool_name].call_tool(args)
+
+def build_tool_spec_registry(cfg: DictConfig) -> ToolSpecRegistry:
+    registry = ToolSpecRegistry()
+
+    for tool_name, spec_cfg in cfg.tools.specs.items():
+        #print(tool_name, spec_cfg)
+        registry.register(tool_name, ToolExecutionSpec(
+            name=tool_name,
+            timeout_ms=float(spec_cfg.timeout_ms),
+            max_retries=int(spec_cfg.max_retries),
+            backoff_ms=float(spec_cfg.backoff_ms),
+        ))
+
+    return registry

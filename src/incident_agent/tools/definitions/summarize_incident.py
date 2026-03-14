@@ -15,7 +15,7 @@ SUMMARIZE_INCIDENT_DEF = ToolDefinition(
                 "items": {"type": "string"},
             },
         },
-        "required": ["alert_id"],
+        "required": ["evidence"],
     },
     output_schema={
         "type": "object",

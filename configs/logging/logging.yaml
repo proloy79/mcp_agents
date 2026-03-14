@@ -1,0 +1,41 @@
+log_dir: ../../logs
+log_file: incident_agent.log
+log_path: ${logging.log_dir}/${logging.log_file}
+
+version: 1
+
+formatters:
+  standard:
+    format: "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: INFO
+    formatter: standard
+    stream: ext://sys.stdout
+
+  file:
+    class: logging.handlers.RotatingFileHandler
+    level: INFO
+    formatter: standard
+    filename: "{log_dir}/incident_agent.log"
+    maxBytes: 5000000
+    backupCount: 5
+
+loggers:
+  "":  # root logger
+    level: DEBUG
+    handlers: [console, file]
+    propagate: false
+
+  websockets:
+    level: ERROR
+  asyncio:
+    level: ERROR
+  urllib3:
+    level: ERROR
+  httpx:
+    level: ERROR
+  aiohttp:
+    level: ERROR

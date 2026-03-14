@@ -30,7 +30,7 @@ class CircuitBreaker:
             self.circuit_open_until = None
             self.failure_timestamps.clear()
             return False
-        self.logger.debug('Circuit is open')
+        self.logger.warn('Circuit is open')
         return True
 
     def record_failure(self):
@@ -43,7 +43,7 @@ class CircuitBreaker:
 
         # if no of failures >= max allowed within a window then extend by cool down period
         if len(self.failure_timestamps) >= self.max_failures:
-            self.logger.debug(f"no of failures({len(self.failure_timestamps)}) >= max allowed({self.max_failures}) within a window.Set the circuit to open")
+            self.logger.warn(f"no of failures({len(self.failure_timestamps)}) >= max allowed({self.max_failures}) within a window.Set the circuit to open")
             self.circuit_open_until = now + self.cooldown_seconds
 
 class ToolExecutor:
@@ -55,13 +55,15 @@ class ToolExecutor:
         self.client = mcp_client
 
     async def call_tool(self, payload):
-        # validate payload
+        self.logger.debug(f"Validate payload : {payload} against run spec: {self.spec.arguments}")
         validation_error = self._validate_payload(payload, self.spec.arguments)
         if validation_error:
+            self.logger.warn("Validation failed")
             return self._format_call_tool_result(validation_error, "error", 0)
             
         # check circuit breaker state
         if self.breaker.is_open():
+            self.logger.info("Circuit is open, not processing")
             return self._format_call_tool_result("circuit open", "error", 0)
         
         attempts = 0  # Count attempts including the first try.
@@ -72,12 +74,13 @@ class ToolExecutor:
             attempts += 1
             
             # check timeout
+            self.logger.debug(f"{self.definition} \n {payload}")
             ok, value = await self._call_with_timeout(self.definition.handler, timeout_ms=self.spec.timeout_ms, payload=payload)
             
             if ok:  # Success: package result with status + latency.                
                 return self._format_call_tool_result(value, "ok", (time.perf_counter() - start_total))
 
-            self.logger.info(f"Attempt no: {attempts} failed. Err: {value}. Record failure in circuit breaker")
+            self.logger.warn(f"Attempt no: {attempts} failed. Err: {value}. Record failure in circuit breaker")
             # register failure in circuit breaker
             self.breaker.record_failure()
     
@@ -97,12 +100,15 @@ class ToolExecutor:
             
         return await self.client.call_tool(self.spec.name, payload)
         
-    def _validate_payload(self, payload: Dict[str, Any], schema: Dict[str, str]) -> Optional[str]:        
-        missing = [key for key in schema.keys() if key not in payload]
+    def _validate_payload(self, payload: Dict[str, Any], schema: Dict[str, Any]) -> Optional[str]:
+        required = schema.get("required", [])
+        missing = [key for key in required if key not in payload]
+    
         if missing:
-            print('\nKeys missing in payload',payload)
-            print('Expected keys:', schema.keys(), 'Payload keys:', payload.keys(),'\n')
+            print("\nKeys missing in payload:", payload)
+            print("Expected required keys:", required, "Payload keys:", payload.keys(), "\n")
             return f"Missing required fields: {', '.join(missing)}"
+    
         return None
         
     async def _call_with_timeout(self, fn, *, timeout_ms: int, **kwargs) -> Tuple[bool, Any]:
@@ -119,6 +125,7 @@ class ToolExecutor:
         except asyncio.TimeoutError:
             return False, f"timeout after {timeout_ms} ms"
         except Exception as exc:
+            self.logger.exception(exc)
             return False, str(exc)
             
     def _format_call_tool_result(self, result: str, status: str, latency_ms: int):
