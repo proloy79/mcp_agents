@@ -2,16 +2,16 @@
 
 [![Open In Colab - incident agent runner](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/proloy79/incident_agent/blob/main/notebooks/incident_agent_runner.ipynb)
 
-A deterministic, replay‑friendly workflow engine designed for incident analysis, diagnostics, and automated reasoning.
+This project is an example of agentic AI - a software that suggests solutions based on previous results and can take action by calling tools based on the generated plan.
 
-It uses a LLM stub for planning, MCP tools for gathering system data, and a simple semantic memory layer to reason about and summarise infrastructure issues.
+It uses a LLM stub for planning, MCP tools for gathering system data, and a simple semantic memory layer to understand and suggest a multi-step action plan for infrastructure issues.
 
 This project is meant to be easy to read and extend — a minimal reference implementation of how an agent can coordinate planning, tool execution, and structured reasoning to handle an incident from start to finish.
 
 The agent brings together:
 - LLM driven planning to break an incident into actionable steps
 (currently using a LLM stub, that can be swapped for a real one with no structural changes)
-- MCP based tool execution for collecting logs, metrics, and system state
+- MCP based tool execution for collecting logs, metrics, and system state data
 - TaskGraph orchestration to run plan steps safely with guardrails
 - Structured trace events for replay and debugging
 - Semantic memory to maintain context across steps and improve reasoning. Uses the simple approach of returning the top-k entries by cosine similarity to the query vector
@@ -20,13 +20,6 @@ The agent can operate in two modes:
 - Live Mode — the agent plans, executes tools, records traces, and responds to real incidents.
 - Replay Mode — the agent replays a previously recorded trace deterministically for debugging, testing, and workflow evolution.
   
-
-## Installation
-
-Clone the repository and install in editable mode:
-    pip install -e .
-
-Repo: https://github.com/proloy79/incident_agent.git
 
 ## Features
 
@@ -97,6 +90,8 @@ Contains deterministic traces for:
 - Multi‑step incidents
 
 ## Running the Agent
+
+Clone the repository: https://github.com/proloy79/incident_agent.git
 
 MCP Server
     python -m incident_agent.mcp_demo_server
