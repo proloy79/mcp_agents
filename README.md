@@ -6,7 +6,7 @@ This project is an example of agentic AI - a software that suggests solutions ba
 
 It uses a LLM stub for planning, MCP tools for gathering system data, and a simple semantic memory layer to understand and suggest a multi-step action plan for infrastructure issues.
 
-This project is meant to be easy to read and extend — a basic implementation of how an agent can coordinate planning, tool execution, and memory-based reasoning to handle an incident from start to finish.
+This project is a prototype that can be easy to read and extend — a basic implementation of how an agent can coordinate planning, tool execution, and memory-based reasoning to handle an incident from start to finish.
 
 The agent brings together:
 - LLM driven planning to break an incident into actionable steps
